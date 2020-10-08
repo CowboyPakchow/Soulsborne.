@@ -14,7 +14,7 @@ Python 3.7 is needed to play this game. Click on [Python 3.7](https://www.python
 ```python
 python main.py to run main.py
 python SimpleMenu.py to run simplemenu
-run "pip3 install tabulate" to see Map
+python map.py to run map
 ```
 
 ## Contributions
