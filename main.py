@@ -6,7 +6,6 @@
 # Description: Main file to start Soulsborne.
 
 import playerinventory
-print("\n")
 import map
 import SimpleMenu
-from tabulate import tabulate
+
