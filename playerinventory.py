@@ -1,3 +1,5 @@
+print("Hero's Inventory:")
+print("\n")
 inventory = {"Hero": {"Long Sword": 
                       {"damage": 10, 
                       "protection": 0,
