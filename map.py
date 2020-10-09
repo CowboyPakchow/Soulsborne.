@@ -23,14 +23,14 @@ def tile_replace(list, tile1, tile2, tile3, tile4):
     while random_tile(list, tile1) == random_tile(list, tile2):
         random_tile(list, tile1)
         random_tile(list, tile2)
-        while random_tile(list, tile3) == random_tile(list, tile4):
-                random_tile(list, tile3)
-                random_tile(list, tile4)
+    while random_tile(list, tile3) == random_tile(list, tile4):
+        random_tile(list, tile3)
+        random_tile(list, tile4)
 
 
 # Randomly generate a 5x6 map with different tile types.
 def generate_map(list):
-    map = [[random.choice(list) for z in range(5)] for v in range(6)]
+    map = [[random.choice(list) for z in range(6)] for v in range(6)]
     tile_replace(map, "Boss", "Start", "Optional", "Safe Room")
     return map
 
