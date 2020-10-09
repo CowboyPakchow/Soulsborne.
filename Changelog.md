@@ -15,3 +15,4 @@ vPrerelease
 - Added a list of enemies to Soulsborne.
 - Added a randomized map for each floor.
 - Added player character inventory with starting items in it.
+- Added a character file that will list Hero's attributes (not yet implemented)
