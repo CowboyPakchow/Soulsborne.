@@ -19,7 +19,7 @@ inventory = {"Hero": {"Long Sword":
 
 
 def player_inventory(player, inventory):
-    protection_items = []
+    armour = []
     weapons = []
     items = []
     for item in inventory[player]:
@@ -30,11 +30,11 @@ def player_inventory(player, inventory):
         print(f"* Damage: {damage}")
         print(f"* Protection: {protection}")
         if protection != 0 and damage == 0:
-            protection_items.append(item)
+            armour.append(item)
         elif damage != 0 and protection == 0:
             weapons.append(item)
         elif damage == 0 and protection == 0:
             items.append(item)
-    return protection_items, weapons, items
+    return armour, weapons, items
 
 player_inventory("Hero", inventory)
