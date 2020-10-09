@@ -1,3 +1,4 @@
+# Creating a dictionary of the Hero's items in their inventory.
 print("Hero's Inventory:")
 print("\n")
 inventory = {"Hero": {"Long Sword": 
@@ -19,7 +20,7 @@ inventory = {"Hero": {"Long Sword":
                       }
 
 
-
+# Defining and running Hero Inventory.
 def player_inventory(player, inventory):
     armour = []
     weapons = []
