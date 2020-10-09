@@ -16,3 +16,5 @@ vPrerelease
 - Added a randomized map for each floor.
 - Added player character inventory with starting items in it.
 - Added a character file that will list Hero's attributes (not yet implemented)
+- Moved nested dictionary functions from main to dictionary file.
+- Imported playerinventory, SimpleMenu and map to main file.
