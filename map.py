@@ -2,7 +2,7 @@ import random
 from tabulate import tabulate
 
 
-# Creating a list from elements in a dictionary
+# Creating a list from elements in a dictionary.
 def append_list(dictionary, list):
     for x in dictionary:
         list.append(x)
@@ -88,7 +88,7 @@ map_tiles = {"Start": {
                             "Defeat boss to continue."}}
 
 
-# List of floors
+# List of floors.
 floor_level = []
 append_list(floors, floor_level)
 # List of tiles and Removing start, boss, optional and safe floors.
