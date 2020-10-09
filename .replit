@@ -1,2 +1,2 @@
 language = "python3"
-run = "python map.py"
+run = "python SimpleMenu.py"

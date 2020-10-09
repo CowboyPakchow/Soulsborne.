@@ -1,3 +1,10 @@
+# Course: CS 30
+# Period: 1
+# Date Created: 20/10/07
+# Date Modified: 20/10/08
+# Name: Michael Nguyen
+# Description: Map of Soulsborne detailing the 4 floors.
+
 import random
 from tabulate import tabulate
 
