@@ -9,14 +9,14 @@ import random
 from tabulate import tabulate
 
 
-# Creating a list from elements in a dictionary.
 def append_list(dictionary, list):
+    """Creating a list from elements in a dictionary."""
     for x in dictionary:
         list.append(x)
 
 
-# Choosing random tile to replace indices.
 def random_tile(list, tile):
+    """Choosing random tile to replace indices."""
     x = random.choice(list)
     y = random.choice(x)
     a = list.index(x)
@@ -25,8 +25,8 @@ def random_tile(list, tile):
     return(a, b)
 
 
-# Making sure replaced tiles do not overlap.
 def tile_replace(list, tile1, tile2, tile3, tile4):
+    """Making sure replaced tiles do not overlap."""
     while random_tile(list, tile1) == random_tile(list, tile2):
         random_tile(list, tile1)
         random_tile(list, tile2)
@@ -35,15 +35,15 @@ def tile_replace(list, tile1, tile2, tile3, tile4):
         random_tile(list, tile4)
 
 
-# Randomly generate a 5x6 map with different tile types.
 def generate_map(list):
+    """Randomly generate a 5x6 map with different tile types."""
     map = [[random.choice(list) for z in range(6)] for v in range(6)]
     tile_replace(map, "Boss", "Start", "Optional", "Safe Room")
     return map
 
 
-# Printing the map with each floor. Formats in rows and columns.
 def print_map(dictionary):
+    """Printing the map with each floor. Formats in rows and columns."""
     for key in dictionary:
         map = dictionary[key]
         print(f"{key}")

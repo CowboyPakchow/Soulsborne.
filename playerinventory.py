@@ -20,8 +20,8 @@ inventory = {"Hero": {"Long Sword":
                       }
 
 
-# Defining and running Hero Inventory.
 def player_inventory(player, inventory):
+    """Defining and running Hero Inventory."""
     armour = []
     weapons = []
     items = []
