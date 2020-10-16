@@ -88,7 +88,7 @@ def actions_available(position, player):
             add_action(actions, "West", player.move_west, "Move West.")
         if floor1.tile_at(position.x + 1, position.y):
             add_action(actions, "East", player.move_east, "Move East.")
-    # Healing for when the player's hp value is lower than 30
+    # Healing for when the player's hp value is lower than 40.
     if player.hp < 40:
         add_action(actions, "Heal", player.heal, "Heal")
 
