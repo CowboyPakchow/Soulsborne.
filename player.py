@@ -1,6 +1,6 @@
 # Course: CS 30
 # Period: 1
-# Date Created: 20/09/21
+# Date Created: 20/10/15
 # Date Modified: 20/10/16
 # Name: Michael Nguyen
 # Description: Player class for Soulsborne.
@@ -13,32 +13,30 @@ class Player:
     """Player class with inventory and best weapon"""
     def __init__(self):
         # Items that are in the player's inventory at the beginning.
-        self.inventory = [items.Rapier()]
-        # player starting coordinates
+        self.inventory = [items.Rapier(), items.Basic_Shield()]
+        # Starting coordinates of the player.
         self.x = floor1.start_tile_location[0]
         self.y = floor1.start_tile_location[1]
-        # self.x = 1
-        # self.y = 2
-        self.hp = 30
+        self.hp = 40
         self.victory = False
 
     def is_alive(self):
-        """The player is alive if they have at least 1 HP"""
+        """The player is still alive when their hp is at least 1."""
         return self.hp > 0
 
     def print_inventory(self):
-        """Print the inventory of items and the best weapon"""
+        """Print the inventory of items and the best weapon."""
         print("Inventory:")
         for item in self.inventory:
             print("* " + str(item))
-        best_weapon = self.most_powerful_weapon()
-        print("Your best weapon is your {}".format(best_weapon))
+        op_weapon = self.most_powerful_weapon()
+        print("Your strongest weapon is your {}".format(op_weapon))
 
     def most_powerful_weapon(self):
-        """Determine the most power weapon in the inventory"""
+        """Determines the weapon that is the most powerful in the inventory."""
         max_damage = 0
         best_weapon = None
-        # check the damage of each weapon in the inventory
+        # Checks damage of each weapon in your innventory and prints best one.
         for item in self.inventory:
             try:
                 if item.damage > max_damage:
@@ -54,61 +52,61 @@ class Player:
         self.y += dy
 
     def move_north(self):
-        """Define forward movement"""
+        """Defines movement that goes north. (Up)"""
         self.move(dx=0, dy=-1)
 
     def move_south(self):
-        """Define aftward movement"""
+        """Define movement that goes south. (Down)"""
         self.move(dx=0, dy=1)
 
     def move_east(self):
-        """Define movement towards the starboard side"""
+        """Define movement that goes east. (Left)"""
         self.move(dx=1, dy=0)
 
     def move_west(self):
-        """Define movement towards the port side"""
+        """Define movement that goes west.(Right)"""
         self.move(dx=-1, dy=0)
 
     def attack(self):
         """Attack the enemy by removing health points"""
         # Strongest weapon in inventory is used.
-        best_weapon = self.most_powerful_weapon()
-        # Position of the enemy found on floor 1
+        op_weapon = self.most_powerful_weapon()
+        # Position of the enemy found on the first flor.
         position = floor1.tile_at(self.x, self.y)
         enemy = position.enemy
-        # declare which weapon is used and change the value of the enemy's hp
-        print("You use {} against {}!".format(best_weapon.name, enemy.name))
-        enemy.hp -= best_weapon.damage
-        # print out if the enemy is alive and how many hps remain
+        # Declares which weapon is used and how much it affects enemy hp value.
+        print("You use {} against {}!".format(op_weapon.name, enemy.name))
+        enemy.hp -= op_weapon.damage
+        # Prints out if enemy remains alive and remaining hp points.
         if not enemy.is_alive():
             print("The {} has been slain.".format(enemy.name))
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
-  
+
     def heal(self):
         """Check and use consumables for healing"""
-        # add consumables from the inventory
+        # Add consumables from the player's inventory.
         consumables = [item for item in self.inventory
                        if isinstance(item, items.Consumable)]
 
-        # print a message if there are no consumables
+        # If there are no consumables to use, print message.
         if not consumables:
             print("You do not have any items to heal you!")
             return
 
-        # print out a list of available consumables
+        # Prints out list of consumables in the inventory.
         print("Choose an item to use to heal yourself: ")
         for i, item in enumerate(consumables, 1):
             print("{}. {}".format(i, item))
 
-        # choose a consumable from the list and use it
+        # Chooses consumable from inventory and uses it.
         valid = False
         while not valid:
             choice = input("")
             try:
                 to_use = consumables[int(choice) - 1]
-                # cap player's health points to 100
-                self.hp = min(30, self.hp + to_use.healing)
+                # Hp cap is 40 (Might be changed down the line.)
+                self.hp = min(40, self.hp + to_use.healing)
                 # Removes the used item from the inventory.
                 # Prints current amount of health potions in inventory.
                 self.inventory.remove(to_use)
@@ -117,42 +115,41 @@ class Player:
             except (ValueError, IndexError):
                 print("That is not a valid choice, try again!")
 
-    def protect(self):
+    def defend(self):
         """Check and use items for protection"""
-        # add protection items from Inventory
+        # Add protection items to the inventory.
         protection = [item for item in self.inventory
                       if isinstance(item, items.Armour)]
-        # print a message if there are no protection items
+        # If there are no armour items, print a message.
         if not protection:
             print("You do not have any items to protect you!")
             return
         position = floor1.tile_at(self.x, self.y)
         enemy = position.enemy
-        # bread = items.CrustyBread()
-        if enemy.name == "Flock of Blue Space Ducks":
-            print("Bread protection value against ducks is -100 Damage")
-        # print out a list of available protection items
+        if enemy.name == "Hollow Knight":
+            print("Perhaps you can parry its attacks?...")
+        # Prints out list of armour items in inventory to use.
         print("Choose an item to use to protect yourself: ")
         for i, item in enumerate(protection, 1):
             print("{}. {}".format(i, item))
-        # choose a protection item from the list and use it
+        # Choose protection item from inventory and use it.
         valid = False
         while not valid:
             choice = input("")
             try:
-                to_use = protection[int(choice) - 1]
-                # remove used item from the inventory
-                self.inventory.remove(to_use)
-                if enemy.name == "Flock of Blue Space Ducks":
-                    if to_use.name == "Crusty Bread":
-                        to_use.protect_value = 100
+                use = protection[int(choice) - 1]
+                # Armour items are used and then broken. (Defend wisely.)
+                self.inventory.remove(use)
+                if enemy.name == "Hollow Knight":
+                    if use.name == "Basic_Shield":
+                        use.protection = 10
                 else:
-                    if to_use.name == "Crusty Bread":
-                        to_use.protect_value = 0
+                    if use.name == "Basic_Shield":
+                        use.protection = 10
 
-                # decrease damage by using a protection item
-                # limit enemy damage to not drop below 0
-                enemy.damage = enemy.damage - to_use.protection
+                # Damage is decreased when protection item is used.
+                # Enemy damage is limited for it to not go below 0.
+                enemy.damage = enemy.damage - use.protection
                 if enemy.damage > 0:
                     return enemy.damage
                 else:

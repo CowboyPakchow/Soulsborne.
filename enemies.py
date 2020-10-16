@@ -1,9 +1,10 @@
 # Course: CS 30
 # Period: 1
 # Date Created: 20/10/09
-# Date Modified: 20/10/14
+# Date Modified: 20/10/16
 # Name: Michael Nguyen
 # Description: Enemies Classes in Soulsborne.
+
 
 class Enemy():
     def __init__(self):
@@ -41,11 +42,13 @@ class Lizard(Enemy):
         self.hp = 15
         self.damage = 5
 
+
 class Skeleton(Enemy):
     def __init__(self):
         self.name = "Skeleton"
         self.hp = 10
         self.damage = 5
+
 
 # Hollow Knight optional boss detailing its hp and damage.
 class Hollow_Knight(Enemy):

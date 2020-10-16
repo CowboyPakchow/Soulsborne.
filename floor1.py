@@ -1,6 +1,6 @@
 # Course: CS 30
 # Period: 1
-# Date Created: 20/09/21
+# Date Created: 20/10/14
 # Date Modified: 20/10/16
 # Name: Michael Nguyen
 # Description: Floor 1 of Soulsborne.
@@ -10,6 +10,7 @@ import random
 import enemies
 import sys
 import items
+
 
 class MapTile:
     """ The map with X and Y Coordinates"""
@@ -41,6 +42,7 @@ class StartTile(MapTile):
         Floor 1": "The beginner floor, peaceful with little to no harm.
         Reach the Boss Tile (BS) to move on to the next floor. (Ends Game)
         """
+
 
 class SafeRoomTile(MapTile):
     def intro_text(self):
@@ -92,7 +94,7 @@ class ItemTile(MapTile):
     """Position that contains items."""
     def __init__(self, x, y):
         """Items that are currently on the tile."""
-        # Index for switching messages
+        # Index for switching messages.
         self.i = 0
         self.name = "Items"
         self.inventory = [items.Potion()]
@@ -109,7 +111,7 @@ class ItemTile(MapTile):
         """
         # Description after the items are taken from the tile.
         self.no_items = "No items left at this location..."
-        # Descriptions of the items tile are defined. 
+        # Descriptions of the items tile are defined.
         items_text = [self.start_items, self.no_items]
         # After items tile has been exhausted, messages are switched.
         if self.i == 0:
@@ -151,13 +153,14 @@ class BossTile(MapTile):
         """
         dead_return = "Moving to next floor..."
         self.dead_text = [dead_start, dead_return]
+
     def modify_player(self, player):
         player.victory = True
         sys.exit()
 
     def intro_text(self):
         return """
-        Thanks for playing the demo of Soulsborne! 
+        Thanks for playing the demo of Soulsborne!
         More is on the way soon!
         """
 
@@ -200,7 +203,6 @@ class OptionalTile(MapTile):
             else:
                 return self.dead_text[1]
 
-
     def modify_player(self, player):
         """
         Checks the enemy's current strength so it can respond to the player
@@ -218,7 +220,6 @@ class OptionalTile(MapTile):
                 print("The {} causes mortal damage. You die.".
                       format(self.enemy.name))
                 sys.exit()
-
 
 
 class EnemyTile(MapTile):
@@ -251,7 +252,7 @@ class EnemyTile(MapTile):
             self.enemy = enemies.Goblin()
             alive_start = """
             You encounter a Goblin!
-            A good goblin? I guess you could find one if you looked hard enough.
+            A good goblin? You could find one if you looked hard enough.
             """
             alive_attack = "The Goblin attacks!"
             self.alive_text = [alive_start, alive_attack]
@@ -303,7 +304,7 @@ class EnemyTile(MapTile):
     def intro_text(self):
         """Intro message depending on enemy hp."""
         if self.enemy.is_alive():
-            # After player attacks, message switches.
+            # After the player attacks, message switches.
             if self.j == 0:
                 self.j += 1
                 return self.alive_text[0]
@@ -339,6 +340,7 @@ class EnemyTile(MapTile):
 
 floor1_map = []
 
+
 def tile_at(x, y):
     """Locates the tile at a coordinate"""
     if x < 0 or y < 0:
@@ -358,6 +360,7 @@ floor1_dsl = """
 |OT|BT|IT|BT|SF|ET|
 |IT|IT|IT|BT|IT|BS|
 """
+
 
 def is_dsl_valid(dsl):
     """
@@ -390,6 +393,7 @@ tile_type_dict = {"ST": StartTile,
                   "  ": None}
 # Initializes the Starting Tile.
 start_tile_location = None
+
 
 def parse_floor1_dsl():
     """Floor 1 map considered a string and returned as a list."""

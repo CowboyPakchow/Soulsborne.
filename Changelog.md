@@ -34,4 +34,5 @@ Upcoming/Planned
 - Floor 2 possibly planned for version 1.2
 - Gold Tiles are planned for 1.1
 - Item drops planned for 1.2
-- Armour mechanic planned for 1.1
+- More armour items are planned for 1.2
+- More weapons are planned for 1.2

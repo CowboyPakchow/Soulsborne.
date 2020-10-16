@@ -11,7 +11,6 @@ from collections import OrderedDict
 from time import sleep
 
 
-
 def play():
     """ Input for character movement and accessing inventory"""
     print("Welcome to...")
@@ -27,29 +26,30 @@ def play():
         # Health points of the player are modified when they take damage.
         position.modify_player(player)
         if player.is_alive() and not player.victory:
-            choose_action(position, player)
-  
+            action_choice(position, player)
+
+
 def intro_text():
     words = r"""
- _________            .__          
+  _________            .__
  /   _____/ ____  __ __|  |   ______
  \_____  \ /  _ \|  |  \  |  /  ___/
- /        (  <_> )  |  /  |__\___ \ 
+ /        (  <_> )  |  /  |__\___ \
 /_______  /\____/|____/|____/____  >
-        \/                       \/ 
-___.                               
-\_ |__   ___________  ____   ____  
- | __ \ /  _ \_  __ \/    \_/ __ \ 
- | \_\ (  <_> )  | \/   |  \  ___/ 
+        \/                       \/
+___.
+\_ |__   ___________  ____   ____
+ | __ \ /  _ \_  __ \/    \_/ __ \
+ | \_\ (  <_> )  | \/   |  \  ___/
  |___  /\____/|__|  |___|  /\___  >
-     \/                  \/     \/ 
+     \/                  \/     \/
 """
     for char in words:
-      sleep(0.005)
-      print(char, end=" ", flush=True)
+        sleep(0.005)
+        print(char, end=" ", flush=True)
 
 
-def action_adder(action_dict, hotkey, action, name):
+def add_action(action_dict, hotkey, action, name):
     """Adds actions to the dictionary and prints the commands."""
     action_dict[hotkey.lower()] = action
     action_dict[hotkey.upper()] = action
@@ -64,47 +64,48 @@ def actions_available(position, player):
     print("\n")
     # Prints items inside the inventory (If there are any.)
     if player.inventory:
-        action_adder(actions, "Inventory", player.print_inventory, "Print Inventory")
+        add_action(actions, "Inventory", player.print_inventory, "Inventory")
     # Prints the map of the first floor.
     if isinstance(position, floor1.ViewMapTile):
-        action_adder(actions, "Map", position.print_map, "Floor 1 Map")
+        add_action(actions, "Map", position.print_map, "Floor 1 Map")
     # Add an option for items if there are any items remaining.
     if isinstance(position, floor1.ItemTile) and position.inventory:
-        action_adder(actions, "Add", player.add_items, "Add Items")
+        add_action(actions, "Add", player.add_items, "Add Items")
     # Attack and Defend options when in battle with enemy.
     elif isinstance(position, floor1.EnemyTile) and position.enemy.is_alive():
-        action_adder(actions, "Attack", player.attack, "Attack")
-        action_adder(actions, "Defend", player.protect, "Defend")
+        add_action(actions, "Attack", player.attack, "Attack")
+        add_action(actions, "Defend", player.defend, "Defend")
     elif isinstance(position, floor1.OptionalTile) and position.enemy.is_alive():
-        action_adder(actions, "Attack", player.attack, "Attack")
-        action_adder(actions, "Defend", player.protect, "Defend")
+        add_action(actions, "Attack", player.attack, "Attack")
+        add_action(actions, "Defend", player.defend, "Defend")
     # Move to another tile when all other actions are completed.
     else:
         if floor1.tile_at(position.x, position.y - 1):
-            action_adder(actions, "North", player.move_north, "Move North.")
+            add_action(actions, "North", player.move_north, "Move North.")
         if floor1.tile_at(position.x, position.y + 1):
-            action_adder(actions, "South", player.move_south, "Move South.")
+            add_action(actions, "South", player.move_south, "Move South.")
         if floor1.tile_at(position.x - 1, position.y):
-            action_adder(actions, "West", player.move_west, "Move West.")
+            add_action(actions, "West", player.move_west, "Move West.")
         if floor1.tile_at(position.x + 1, position.y):
-            action_adder(actions, "East", player.move_east, "Move East.")
+            add_action(actions, "East", player.move_east, "Move East.")
     # Healing for when the player's hp value is lower than 30
     if player.hp < 40:
-        action_adder(actions, "Heal", player.heal, "Heal")
+        add_action(actions, "Heal", player.heal, "Heal")
 
     return actions
 
 
-def choose_action(position, player):
+def action_choice(position, player):
     """The user is asked an action to perform."""
     action = None
     while not action:
         available_actions = actions_available(position, player)
         print("\n")
-        action_input = input("Make your move. What's it gonna be?:  ").lower().strip()
+        action_input = input("Make your move!:  ").lower().strip()
         action = available_actions.get(action_input)
         if action:
             action()
+
         else:
             print("\nWhat?! I gave you a list of actions. Try Again!")
 
@@ -112,13 +113,13 @@ def choose_action(position, player):
 def move_player(actions, player, position):
     """Depending ont the player's position, movement is changed."""
     if floor1.tile_at(position.x, position.y - 1):
-        return action_adder(actions, "North", player.move_north, "Move North.")
+        return add_action(actions, "North", player.move_north, "Move North.")
     if floor1.tile_at(position.x, position.y + 1):
-        return action_adder(actions, "South", player.move_south, "Move South.")
+        return add_action(actions, "South", player.move_south, "Move South.")
     if floor1.tile_at(position.x - 1, position.y):
-        return action_adder(actions, "West", player.move_west, "Go West.")
+        return add_action(actions, "West", player.move_west, "Move West.")
     if floor1.tile_at(position.x + 1, position.y):
-        return action_adder(actions, "East", player.move_east, "Go East")
+        return add_action(actions, "East", player.move_east, "Move East")
 
 
 play()
