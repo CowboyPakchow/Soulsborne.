@@ -40,7 +40,7 @@ class Lizard(Enemy):
     def __init__(self):
         self.name = "Lizard"
         self.hp = 15
-        self.damage = 5
+        self.damage = 7
 
 
 class Skeleton(Enemy):
