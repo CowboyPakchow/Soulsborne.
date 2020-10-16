@@ -10,7 +10,7 @@ import floor1
 
 
 class Player:
-    """Player class with inventory and best weapon"""
+    """Player class with inventory and strongest weapon in inventory."""
     def __init__(self):
         # Items that are in the player's inventory at the beginning.
         self.inventory = [items.Rapier(), items.Basic_Shield()]
@@ -25,7 +25,7 @@ class Player:
         return self.hp > 0
 
     def print_inventory(self):
-        """Print the inventory of items and the best weapon."""
+        """Print the inventory of items and the strongest weapon."""
         print("Inventory:")
         for item in self.inventory:
             print("* " + str(item))
@@ -35,16 +35,16 @@ class Player:
     def most_powerful_weapon(self):
         """Determines the weapon that is the most powerful in the inventory."""
         max_damage = 0
-        best_weapon = None
+        op_weapon = None
         # Checks damage of each weapon in your innventory and prints best one.
         for item in self.inventory:
             try:
                 if item.damage > max_damage:
-                    best_weapon = item
+                    op_weapon = item
                     max_damage = item.damage
             except AttributeError:
                 pass
-        return best_weapon
+        return op_weapon
 
     def move(self, dx, dy):
         """Define player movement"""
