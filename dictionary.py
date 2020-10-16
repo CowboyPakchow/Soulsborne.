@@ -134,3 +134,4 @@ for inventory, inventory_info in inventory.items():
     print(f"    Damage: {damage}")
     protection = (inventory_info['protection'])
     print(f"    Protection: {protection}")
+# Not sure if needed anymore.
