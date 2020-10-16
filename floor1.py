@@ -1,6 +1,6 @@
 # Course: CS 30
 # Period: 1
-# Date Created: 20/10/14
+# Date Created: 20/10/15
 # Date Modified: 20/10/16
 # Name: Michael Nguyen
 # Description: Floor 1 of Soulsborne.
@@ -351,7 +351,7 @@ def tile_at(x, y):
         return None
 
 
-# Floor 1's map in abbrieviations.
+# Floor 1's map in abbreviations.
 floor1_dsl = """
 |ET|BT|IT|BT|IT|ET|
 |BT|ST|IT|ET|BT|ET|
@@ -406,7 +406,7 @@ def parse_floor1_dsl():
     for y, dsl_row in enumerate(dsl_lines):
         # Object created to store lines.
         row = []
-        # Line is split into abbrieviations.
+        # Line is split into abbreviations.
         dsl_cells = dsl_row.split("|")
         dsl_cells = [c for c in dsl_cells if c]
         for x, dsl_cells in enumerate(dsl_cells):
