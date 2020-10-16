@@ -47,7 +47,7 @@ class Player:
         return op_weapon
 
     def move(self, dx, dy):
-        """Define player movement"""
+        """Define player."""
         self.x += dx
         self.y += dy
 
@@ -71,7 +71,7 @@ class Player:
         """Attack the enemy by removing health points"""
         # Strongest weapon in inventory is used.
         op_weapon = self.most_powerful_weapon()
-        # Position of the enemy found on the first flor.
+        # Position of the enemy found on the first floor.
         position = floor1.tile_at(self.x, self.y)
         enemy = position.enemy
         # Declares which weapon is used and how much it affects enemy hp value.
@@ -155,7 +155,7 @@ class Player:
                 else:
                     enemy.damage = 0
                     return enemy.damage
-                print("Potential Damage: {}".format(enemy.damage))
+                print("Damage Reduced: {}".format(enemy.damage))
                 valid = True
             except (ValueError, IndexError):
                 print("That is not a valid choice! Try Again!")
