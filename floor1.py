@@ -321,7 +321,7 @@ class EnemyTile(MapTile):
 
     def modify_player(self, player):
         """
-        Checks the enemy's current strength so it can respond to the player
+        Checks enemy current strength to respond to player's hp value.
         """
         if self.enemy.is_alive():
             # Game will continue to run as long as the player has hp.
@@ -333,7 +333,7 @@ class EnemyTile(MapTile):
                              player.hp))
             # If the player runs out of hp, the game ends.
             elif player.hp <= self.enemy.damage:
-                print("The {} causes mortal damage. You die.".
+                print("The {} causes lethal damage. You perish in battle...".
                       format(self.enemy.name))
                 sys.exit()
 
@@ -342,7 +342,7 @@ floor1_map = []
 
 
 def tile_at(x, y):
-    """Locates the tile at a coordinate"""
+    """Locates a certain tile at a coordinate."""
     if x < 0 or y < 0:
         return None
     try:
@@ -364,8 +364,7 @@ floor1_dsl = """
 
 def is_dsl_valid(dsl):
     """
-    Check to make sure there is only one start tile and escape pod.
-    Also check that each row has the same number of columns
+    Check to make sure the game has only 1 Start, 1 Boss and 1 Optional Tile.
     """
     if dsl.count("|ST|") != 1:
         return False
