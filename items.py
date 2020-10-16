@@ -160,4 +160,4 @@ class Gold_Coins(Currency):
     def __init__(self):
         self.name = "Gold Coins"
         self.description = "Coins for bartering"
-        self.money = 10
+
