@@ -27,6 +27,12 @@ v1.0
 - Removed SimpleMenu.py in place of a better menu system.
 - Removed map.py in place of floor 1 map.
 - Modified certain enemy hp and damage values.
+- Modified Weapon names.
+- Modified Weapon damages.
+- Currently only 1 basic shield is available.
+- Item tiles only contain potions as of now.
+
+
 
 Upcoming/Planned
 - Currently Boss of the first floor planned for version 1.1
@@ -37,3 +43,4 @@ Upcoming/Planned
 - Item drops planned for 1.2
 - More armour items are planned for 1.2
 - More weapons are planned for 1.2
+- Monster drops planned for 1.1 or 1.2
