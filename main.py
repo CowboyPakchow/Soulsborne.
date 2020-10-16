@@ -12,7 +12,7 @@ from time import sleep
 
 
 def play():
-    """ Input for character movement and accessing inventory"""
+    """ Character movement and accessing the inventory."""
     print("Welcome to...")
     intro_text()
     floor1.parse_floor1_dsl()
@@ -57,7 +57,7 @@ def add_action(action_dict, hotkey, action, name):
 
 
 def actions_available(position, player):
-    """Only make valid actions available. Actions are stored in a dictionary"""
+    """Only make valid actions. Actions are stored in a dictionary"""
     # All actions are stored in an ordered dictionary.
     actions = OrderedDict()
     print("\nIt's your turn, time to make a move!:  ")
