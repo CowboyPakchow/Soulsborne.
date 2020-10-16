@@ -107,7 +107,7 @@ def action_choice(position, player):
             action()
 
         else:
-            print("\nWhat?! I gave you a list of actions. Try Again!")
+            print("\nWhat?! You have a list of actions! Try Again!")
 
 
 def move_player(actions, player, position):
