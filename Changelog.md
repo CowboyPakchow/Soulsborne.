@@ -18,3 +18,20 @@ vPrerelease
 - Added a character file that will list Hero's attributes (not yet implemented)
 - Moved nested dictionary functions from main to dictionary file.
 - Imported playerinventory, SimpleMenu and map to main file.
+
+
+v1.0
+- Game is in a playable state.
+- Removed Armour.py and Weapons.py in place of everything in items.py
+- Removed character.py in place of player.py
+- Removed SimpleMenu.py in place of a better menu system.
+- Removed map.py in place of floor 1 map.
+
+Upcoming/Planned
+- Currently Boss of the first floor planned for version 1.1
+  - Game ends after reaching Boss Tile.
+- Merchants that appear in Safe Rooms are planned for version 1.1
+- Floor 2 possibly planned for version 1.2
+- Gold Tiles are planned for 1.1
+- Item drops planned for 1.2
+- Armour mechanic planned for 1.1

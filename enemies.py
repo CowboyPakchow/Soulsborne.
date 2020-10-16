@@ -1,3 +1,10 @@
+# Course: CS 30
+# Period: 1
+# Date Created: 20/10/09
+# Date Modified: 20/10/14
+# Name: Michael Nguyen
+# Description: Enemies Classes in Soulsborne.
+
 class Enemy():
     def __init__(self):
         raise NotImplementedError("Do not create raw Enemy objects")
@@ -24,7 +31,7 @@ class Goblin(Enemy):
     def __init__(self):
         self.name = "Goblin"
         self.hp = 15
-        self.damage = 10
+        self.damage = 8
 
 
 # Lizard enemy detialing its hp and damage.
@@ -34,6 +41,11 @@ class Lizard(Enemy):
         self.hp = 15
         self.damage = 5
 
+class Skeleton(Enemy):
+    def __init__(self):
+        self.name = "Skeleton"
+        self.hp = 10
+        self.damage = 5
 
 # Hollow Knight optional boss detailing its hp and damage.
 class Hollow_Knight(Enemy):
@@ -56,9 +68,9 @@ class King_Slime(Enemy):
 
 
 # Skeleton enemy detailing its hp and damage.
-class Skeleton(Enemy):
+class Bonewheel(Enemy):
     def __init__(self):
-        self.name = "Skeleton"
+        self.name = "Bonewheel Skeleton"
         self.hp = 20
         self.damage = 15
 
