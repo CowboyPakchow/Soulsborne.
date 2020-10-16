@@ -44,3 +44,4 @@ def player_inventory(player, inventory):
     return armour, weapons, items
 
 player_inventory("Hero", inventory)
+# Not sure if needed anymore
