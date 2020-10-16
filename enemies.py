@@ -56,7 +56,7 @@ class Hollow_Knight(Enemy):
         self.name = "Hollow Knight"
         self.description = "The Wandering Knight who since lost his name..."
         self.hp = 25
-        self.damage = 13
+        self.damage = 12
 
 
 # King Slime boss detailing its hp and damage.
