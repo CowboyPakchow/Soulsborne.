@@ -26,6 +26,7 @@ v1.0
 - Removed character.py in place of player.py
 - Removed SimpleMenu.py in place of a better menu system.
 - Removed map.py in place of floor 1 map.
+- Modified certain enemy hp and damage values.
 
 Upcoming/Planned
 - Currently Boss of the first floor planned for version 1.1
