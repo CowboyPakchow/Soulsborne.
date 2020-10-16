@@ -74,15 +74,15 @@ class ViewMapTile(MapTile):
         """Prints a map of the entire floor (You are on Map Tile)"""
         self.floor1_printable = """
         +----------+-------+-------+-------+-----------+-------+
-        | Enemy    |       | Items |       | Items     | Enemy |
+        | Enemy    | Enemy | Items |       | Items     | Enemy |
         +----------+-------+-------+-------+-----------+-------+
         |          | Start | Items | Enemy |           | Enemy |
         +----------+-------+-------+-------+-----------+-------+
-        |          | Enemy | Items | Items | Enemy     | Items |
+        | Enemy    | Enemy | Items | Items | Enemy     | Items |
         +----------+-------+-------+-------+-----------+-------+
         |          | Items |       | Items | Map Tile  | Enemy |
         +----------+-------+-------+-------+-----------+-------+
-        | Optional |       | Items |       | Safe Room | Enemy |
+        | Optional | Enemy | Items | Enemy | Safe Room | Enemy |
         +----------+-------+-------+-------+-----------+-------+
         | Items    | Items | Items |       | Items     | Boss  |
         +----------+-------+-------+-------+-----------+-------+
@@ -353,11 +353,11 @@ def tile_at(x, y):
 
 # Floor 1's map in abbreviations.
 floor1_dsl = """
-|ET|BT|IT|BT|IT|ET|
+|ET|ET|IT|BT|IT|ET|
 |BT|ST|IT|ET|BT|ET|
-|BT|ET|IT|IT|ET|IT|
+|ET|ET|IT|IT|ET|IT|
 |BT|IT|BT|IT|MT|ET|
-|OT|BT|IT|BT|SF|ET|
+|OT|ET|IT|ET|SF|ET|
 |IT|IT|IT|BT|IT|BS|
 """
 
