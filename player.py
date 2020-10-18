@@ -84,8 +84,7 @@ class Player:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
 
     def heal(self):
-        """Check and use consumables for healing"""
-        # Add consumables from the player's inventory.
+        """Check for and use consumables to heal player hp."""
         consumables = [item for item in self.inventory
                        if isinstance(item, items.Consumable)]
 
@@ -105,7 +104,7 @@ class Player:
             choice = input("")
             try:
                 to_use = consumables[int(choice) - 1]
-                # Hp cap is 40 (Might be changed down the line.)
+                # HP cap is 40 (Might be changed down the line.)
                 self.hp = min(40, self.hp + to_use.healing)
                 # Removes the used item from the inventory.
                 # Prints current amount of health potions in inventory.
@@ -116,7 +115,7 @@ class Player:
                 print("That is not a valid choice, try again!")
 
     def defend(self):
-        """Check and use items for protection"""
+        """Check for and use protection items."""
         # Add protection items to the inventory.
         protection = [item for item in self.inventory
                       if isinstance(item, items.Armour)]
