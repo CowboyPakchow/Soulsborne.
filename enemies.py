@@ -35,14 +35,14 @@ class Goblin(Enemy):
         self.damage = 8
 
 
-# Lizard enemy detialing its hp and damage.
+# Lizard enemy detailing its hp and damage.
 class Lizard(Enemy):
     def __init__(self):
         self.name = "Lizard"
         self.hp = 15
         self.damage = 7
 
-
+# Skeleton enemy detailing its hp and damage
 class Skeleton(Enemy):
     def __init__(self):
         self.name = "Skeleton"
@@ -56,7 +56,7 @@ class Hollow_Knight(Enemy):
         self.name = "Hollow Knight"
         self.description = "The Wandering Knight who since lost his name..."
         self.hp = 25
-        self.damage = 12
+        self.damage = 15
 
 
 # King Slime boss detailing its hp and damage.
@@ -70,7 +70,7 @@ class King_Slime(Enemy):
 # Floor 2 Enemies
 
 
-# Skeleton enemy detailing its hp and damage.
+# Bonewheel Skeleton enemy detailing its hp and damage.
 class Bonewheel(Enemy):
     def __init__(self):
         self.name = "Bonewheel Skeleton"
