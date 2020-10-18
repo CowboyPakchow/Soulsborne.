@@ -11,24 +11,6 @@ from collections import OrderedDict
 from time import sleep
 
 
-def play():
-    """ Character movement and accessing the inventory."""
-    print("Welcome to...")
-    intro_text()
-    floor1.parse_floor1_dsl()
-    player = Player()
-    # Player directions and actions they can perform while alive.
-    while player.is_alive() and not player.victory:
-        # Defining the player's starting position
-        position = floor1.tile_at(player.x, player.y)
-        # The intro of the game is printed at the starting position.
-        print(position.intro_text())
-        # Health points of the player are modified when they take damage.
-        position.modify_player(player)
-        if player.is_alive() and not player.victory:
-            action_choice(position, player)
-
-
 def intro_text():
     words = r"""
   _________            .__
@@ -54,6 +36,18 @@ def add_action(action_dict, hotkey, action, name):
     action_dict[hotkey.lower()] = action
     action_dict[hotkey.upper()] = action
     print("{}: {}".format(hotkey, name))
+
+
+def move_player(actions, player, position):
+    """Depending on the player's position, movement is changed."""
+    if floor1.tile_at(position.x, position.y - 1):
+        return add_action(actions, "North", player.move_north, "Move North.")
+    if floor1.tile_at(position.x, position.y + 1):
+        return add_action(actions, "South", player.move_south, "Move South.")
+    if floor1.tile_at(position.x - 1, position.y):
+        return add_action(actions, "West", player.move_west, "Move West.")
+    if floor1.tile_at(position.x + 1, position.y):
+        return add_action(actions, "East", player.move_east, "Move East")
 
 
 def actions_available(position, player):
@@ -110,16 +104,23 @@ def action_choice(position, player):
             print("\nWhat?! You have a list of actions! Try Again!")
 
 
-def move_player(actions, player, position):
-    """Depending ont the player's position, movement is changed."""
-    if floor1.tile_at(position.x, position.y - 1):
-        return add_action(actions, "North", player.move_north, "Move North.")
-    if floor1.tile_at(position.x, position.y + 1):
-        return add_action(actions, "South", player.move_south, "Move South.")
-    if floor1.tile_at(position.x - 1, position.y):
-        return add_action(actions, "West", player.move_west, "Move West.")
-    if floor1.tile_at(position.x + 1, position.y):
-        return add_action(actions, "East", player.move_east, "Move East")
+def play():
+    """ Character movement and accessing the inventory."""
+    print("Welcome to...")
+    intro_text()
+    floor1.parse_floor1_dsl()
+    player = Player()
+    # Player directions and actions they can perform while alive.
+    while player.is_alive() and not player.victory:
+        # Defining the player's starting position
+        position = floor1.tile_at(player.x, player.y)
+        # The intro of the game is printed at the starting position.
+        print(position.intro_text())
+        # Health points of the player are modified when they take damage.
+        position.modify_player(player)
+        if player.is_alive() and not player.victory:
+            action_choice(position, player)
+
 
 
 play()
