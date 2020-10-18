@@ -3,7 +3,7 @@
 # Date Created: 20/09/21
 # Date Modified: 20/10/16
 # Name: Michael Nguyen
-# Description: Player class for Soulsborne.
+# Description: Main file to run Soulsborne.
 
 from player import Player
 import floor1
