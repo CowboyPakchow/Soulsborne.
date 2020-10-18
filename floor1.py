@@ -243,6 +243,9 @@ class EnemyTile(MapTile):
             self.alive_text = [alive_start, alive_attack]
             dead_start = """
             The slime disappears into thin air.
+            Man, I feel kinda bad...
+            Don't be it's just a video game mob!
+            What are you talking about?
             """
             dead_return = "Slime condensate floats on the ground..."
             self.dead_text = [dead_start, dead_return]
@@ -328,9 +331,8 @@ class EnemyTile(MapTile):
             # Game will continue to run as long as the player has hp.
             if player.hp > self.enemy.damage:
                 player.hp -= self.enemy.damage
-                print("The {} does {} damage. You have {} HP remaining".
-                      format(self.enemy.name,
-                             self.enemy.damage,
+                print("The {} does {} damage. You are injured, {} HP remains.".
+                      format(self.enemy.name, self.enemy.damage,
                              player.hp))
             # If the player runs out of hp, the game ends.
             elif player.hp <= self.enemy.damage:
@@ -365,7 +367,7 @@ floor1_dsl = """
 
 def is_dsl_valid(dsl):
     """
-    Check to make sure the game has only 1 Start, 1 Boss, 1 Optional and 1 Map Tile.
+    Check if game has only 1 Start, 1 Boss, 1 Optional and 1 Map Tile.
     """
     if dsl.count("|ST|") != 1:
         return False
