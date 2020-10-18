@@ -80,7 +80,7 @@ class ViewMapTile(MapTile):
         +----------+-------+-------+-------+-----------+-------+
         | Enemy    | Enemy | Items | Items | Enemy     | Items |
         +----------+-------+-------+-------+-----------+-------+
-        |          | Items |       | Items | Map Tile  | Enemy |
+        |          | Items |  Map  |       | Items     | Enemy |
         +----------+-------+-------+-------+-----------+-------+
         | Optional | Enemy | Items | Enemy | Safe Room | Enemy |
         +----------+-------+-------+-------+-----------+-------+
@@ -137,8 +137,8 @@ class ItemTile(MapTile):
 
 class BossTile(MapTile):
     def __init__(self, x, y):
-        self.j = 0
-        self.k = 0
+        self.a = 0
+        self.d = 0
         self.enemy = enemies.King_Slime
         alive_start = """
         You encounter the King Slime!
@@ -167,8 +167,8 @@ class BossTile(MapTile):
 
 class OptionalTile(MapTile):
     def __init__(self, x, y):
-        self.j = 0
-        self.k = 0
+        self.a = 0
+        self.d = 0
         # Optional Boss 100% spawns on this tile. (Hollow Knight)
         self.enemy = enemies.Hollow_Knight()
         alive_start = """
@@ -189,16 +189,16 @@ class OptionalTile(MapTile):
         """Intro message dependent on enemy health points"""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
-            if self.j == 0:
-                self.j += 1
+            if self.a == 0:
+                self.a += 1
                 return self.alive_text[0]
             else:
                 return self.alive_text[1]
         # Intro message changes when the player returns to the tile.
         # When there is a dead enemy, dead text plays.
         else:
-            if self.k == 0:
-                self.k += 1
+            if self.d == 0:
+                self.d += 1
                 return self.dead_text[0]
             else:
                 return self.dead_text[1]
@@ -227,8 +227,8 @@ class EnemyTile(MapTile):
     def __init__(self, x, y):
         """Creates a random position for each enemy"""
         # Indices of j and k to switch out alive and dead messages.
-        self.j = 0
-        self.k = 0
+        self.a = 0
+        self.d = 0
         # Generates a random number that spawns a certain enemy.
         r = random.random()
         # Slime encounters are about 50%.
@@ -252,6 +252,7 @@ class EnemyTile(MapTile):
             self.enemy = enemies.Goblin()
             alive_start = """
             You encounter a Goblin!
+            Are there any good goblins?
             A good goblin? You could find one if you looked hard enough.
             """
             alive_attack = "The Goblin attacks!"
@@ -305,16 +306,16 @@ class EnemyTile(MapTile):
         """Intro message depending on enemy hp."""
         if self.enemy.is_alive():
             # After the player attacks, message switches.
-            if self.j == 0:
-                self.j += 1
+            if self.a == 0:
+                self.a += 1
                 return self.alive_text[0]
             else:
                 return self.alive_text[1]
         # Intro message changes when the player returns to the tile.
         # When there is a dead enemy, dead text plays.
         else:
-            if self.k == 0:
-                self.k += 1
+            if self.d == 0:
+                self.d += 1
                 return self.dead_text[0]
             else:
                 return self.dead_text[1]
@@ -356,7 +357,7 @@ floor1_dsl = """
 |ET|ET|IT|BT|IT|ET|
 |BT|ST|IT|ET|BT|ET|
 |ET|ET|IT|IT|ET|IT|
-|BT|IT|BT|IT|MT|ET|
+|BT|IT|MT|BT|IT|ET|
 |OT|ET|IT|ET|SF|ET|
 |IT|IT|IT|BT|IT|BS|
 """
@@ -364,13 +365,15 @@ floor1_dsl = """
 
 def is_dsl_valid(dsl):
     """
-    Check to make sure the game has only 1 Start, 1 Boss and 1 Optional Tile.
+    Check to make sure the game has only 1 Start, 1 Boss, 1 Optional and 1 Map Tile.
     """
     if dsl.count("|ST|") != 1:
         return False
     if dsl.count("|BS|") == 0:
         return False
     if dsl.count("|OT|") == 0:
+        return False
+    if dsl.count("|MT|") == 0:
         return False
     lines = dsl.splitlines()
     lines = [l for l in lines if l]
