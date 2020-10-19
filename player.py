@@ -7,6 +7,7 @@
 
 import items
 import floor1
+import sys
 
 
 class Player:
@@ -166,3 +167,11 @@ class Player:
         # Add the inventory from the items tile to the player's inventory.
         current_inventory = self.inventory
         position.add_inventory(current_inventory)
+
+    def quit(self):
+        """Quits out of game"""
+        while True:
+            word = input("Are you sure you want to quit out of the game? ")
+            if word in ['yes']:
+                print("They always return eventually...")
+                sys.exit()

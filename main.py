@@ -9,6 +9,7 @@ from player import Player
 import floor1
 from collections import OrderedDict
 from time import sleep
+import sys
 
 
 def intro_text():
@@ -49,6 +50,14 @@ def move_player(actions, player, position):
     if floor1.tile_at(position.x + 1, position.y):
         return add_action(actions, "East", player.move_east, "Move East")
 
+    def quit(self):
+        """Quits out of game"""
+        while True:
+            word = input("Are you sure you want to quit out of the game? ")
+            if word in ['yes']:
+                print("They always return eventually...")
+                sys.exit()
+
 
 def actions_available(position, player):
     """Only make valid actions. Actions are stored in a dictionary"""
@@ -85,6 +94,8 @@ def actions_available(position, player):
     # Healing for when the player's hp value is lower than 40.
     if player.hp < 40:
         add_action(actions, "Heal", player.heal, "Heal")
+    if player.quit:
+        add_action(actions, "Quit", player.quit, "Quit out of game.")
 
     return actions
 
@@ -120,7 +131,6 @@ def play():
         position.modify_player(player)
         if player.is_alive() and not player.victory:
             action_choice(position, player)
-
 
 
 play()
