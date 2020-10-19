@@ -53,7 +53,7 @@ def move_player(actions, player, position):
     def quit(self):
         """Quits out of game"""
         while True:
-            word = input("Are you sure you want to quit out of the game? ")
+            word = input("Are you sure you want to quit? ('yes to quit.')")
             if word in ['yes']:
                 print("They always return eventually...")
                 sys.exit()
