@@ -217,7 +217,7 @@ class OptionalTile(MapTile):
                              player.hp))
             # When the player runs out of hp, end the game.
             elif player.hp <= self.enemy.damage:
-                print("The {} causes mortal damage. You die.".
+                print("The {} causes lethal damage. You perish in battle...".
                       format(self.enemy.name))
                 sys.exit()
 
