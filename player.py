@@ -1,12 +1,12 @@
 # Course: CS 30
 # Period: 1
 # Date Created: 20/10/15
-# Date Modified: 20/10/16
+# Date Modified: 20/10/26
 # Name: Michael Nguyen
 # Description: Player class for Soulsborne.
 
 import items
-import floor1
+import floor
 import sys
 
 
@@ -14,11 +14,11 @@ class Player:
     """Player class with inventory and strongest weapon in inventory."""
     def __init__(self):
         # Items that are in the player's inventory at the beginning.
-        self.inventory = [items.Rapier(), items.Basic_Shield()]
+        self.inventory = [items.Rapier(), items.Basic_Shield(), items.Abysswalker(), items.Abysswalker_Arm()]
         # Starting coordinates of the player.
-        self.x = floor1.start_tile_location[0]
-        self.y = floor1.start_tile_location[1]
-        self.hp = 40
+        self.x = floor.start_tile_location[0]
+        self.y = floor.start_tile_location[1]
+        self.hp = 60
         self.victory = False
 
     def is_alive(self):
@@ -61,11 +61,11 @@ class Player:
         self.move(dx=0, dy=1)
 
     def move_east(self):
-        """Define movement that goes east. (Left)"""
+        """Define movement that goes east. (Right)"""
         self.move(dx=1, dy=0)
 
     def move_west(self):
-        """Define movement that goes west.(Right)"""
+        """Define movement that goes west.(Left)"""
         self.move(dx=-1, dy=0)
 
     def attack(self):
@@ -73,7 +73,7 @@ class Player:
         # Strongest weapon in inventory is used.
         op_weapon = self.most_powerful_weapon()
         # Position of the enemy found on the first floor.
-        position = floor1.tile_at(self.x, self.y)
+        position = floor.tile_at(self.x, self.y)
         enemy = position.enemy
         # Declares which weapon is used and how much it affects enemy hp value.
         print("You use {} against {}!".format(op_weapon.name, enemy.name))
@@ -105,8 +105,8 @@ class Player:
             choice = input("")
             try:
                 to_use = consumables[int(choice) - 1]
-                # HP cap is 40 (Might be changed down the line.)
-                self.hp = min(40, self.hp + to_use.healing)
+                # HP cap is 60.
+                self.hp = min(60, self.hp + to_use.healing)
                 # Removes the used item from the inventory.
                 # Prints current amount of health potions in inventory.
                 self.inventory.remove(to_use)
@@ -124,7 +124,7 @@ class Player:
         if not protection:
             print("You do not have any items to protect you!")
             return
-        position = floor1.tile_at(self.x, self.y)
+        position = floor.tile_at(self.x, self.y)
         enemy = position.enemy
         if enemy.name == "Hollow Knight":
             print("Perhaps you can parry its attacks?...")
@@ -158,12 +158,12 @@ class Player:
                 print("Damage Reduced: {}".format(enemy.damage))
                 valid = True
             except (ValueError, IndexError):
-                print("That is not a valid choice! Try Again!")
+                print("It's a numerical list man, choose a number!")
 
     def add_items(self):
         """Add items to the player's inventory when items are found."""
         # Define the position on the map of the first floor.
-        position = floor1.tile_at(self.x, self.y)
+        position = floor.tile_at(self.x, self.y)
         # Add the inventory from the items tile to the player's inventory.
         current_inventory = self.inventory
         position.add_inventory(current_inventory)
@@ -171,7 +171,10 @@ class Player:
     def quit(self):
         """Quits out of game"""
         while True:
-            word = input("Are you sure you want to quit? ('yes to quit.')")
+            word = input("Are you sure you want to quit? ")
             if word in ['yes']:
                 print("They always return eventually...")
                 sys.exit()
+            else:
+                break
+    
