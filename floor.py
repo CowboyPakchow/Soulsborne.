@@ -238,7 +238,7 @@ class RightMap(MapTile):
 +-------+-------+-------+-------+-------+
 | Blank | Items | Enemy | Items | Enemy |
 +-------+-------+-------+-------+-------+
-                | Blank |
+                |  Map  |
                 +-------+
                 | Blank |
 +-------+-------+-------+-------+-------+-------+
@@ -290,7 +290,7 @@ class LeftMap(MapTile):
 +-------+-------+-------+-------+-------+
 | Loot  |       | Blank |
 +-------+       +-------+
-                | Blank |
+                |  Map  |
 +-------+-------+-------+-------+-------+
 | Enemy | Items | Blank | Items | Enemy |
 +-------+-------+-------+-------+-------+
@@ -1752,7 +1752,7 @@ floor_dsl = """
 |  |  |  |  |  |ET|IT|  |  |ET|BT|BT|IT|IT|  |  |  |  |ER|IR|BT|ER|IR|
 |  |  |LT|BU|ET|IT|SF|BW|BT|BT|ET|IT|IT|ET|  |  |  |  |ER|ER|ER|IR|IR|
 |  |  |  |  |  |ET|IT|  |  |BT|ET|ET|IT|BT|  |  |  |  |BT|ER|IR|ER|BT|
-|  |  |  |  |  |BT|  |  |  |ET|ET|TM|BT|ET|  |  |  |  |BT|IR|ER|IR|ER|
+|  |  |  |  |  |BT|  |  |  |ET|ET|TM|BT|ET|  |  |  |  |BT|IR|RM|IR|ER|
 |  |  |  |  |  |  |  |  |  |  |  |BT|  |  |  |  |  |  |  |  |BT|
 |  |  |  |  |  |  |  |  |  |  |  |BT|  |  |  |  |  |  |  |  |BT|
 |EL|IL|BT|IL|EL|  |  |  |  |BT|BT|TP|BT|BT|  |  |  |  |ER|IR|BT|BT|OR|SR|
@@ -1761,7 +1761,7 @@ floor_dsl = """
 |IL|EL|BT|IL|EL|  |  |  |  |BT|BT|BT|BT|BT|  |  |  |  |ER|BT|ER|BT|IR|
 |OL|IL|EL|SF|EL|  |  |  |  |BT|BT|BP|BT|BT|  |  |  |  |IR|IR|ER|BT|BT|
 |SL|  |BT|  |  |  |  |  |  |  |  |BT|
-|  |  |BT|  |  |  |  |  |  |  |  |BT|
+|  |  |LM|  |  |  |  |  |  |  |  |BT|
 |EL|IT|BT|IL|EL|  |  |  |  |EB|BT|BM|EB|IB|  |  |  |BT|
 |BT|EL|IT|EL|BT|  |  |  |  |BT|IB|EB|EB|EB|  |  |IB|EB|
 |EL|IT|EL|IL|BT|  |  |  |  |EB|BT|IB|BT|EB|BT|BW|SF|BR|BL|AL|BU|BB|CH|
