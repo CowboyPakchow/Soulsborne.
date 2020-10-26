@@ -14,7 +14,7 @@ class Player:
     """Player class with inventory and strongest weapon in inventory."""
     def __init__(self):
         # Items that are in the player's inventory at the beginning.
-        self.inventory = [items.Rapier(), items.Basic_Shield(), items.Abysswalker(), items.Abysswalker_Arm()]
+        self.inventory = [items.Rapier(), items.Basic_Shield()]
         # Starting coordinates of the player.
         self.x = floor.start_tile_location[0]
         self.y = floor.start_tile_location[1]
