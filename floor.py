@@ -1,15 +1,16 @@
 # Course: CS 30
 # Period: 1
 # Date Created: 20/10/15
-# Date Modified: 20/10/26
+# Date Modified: 20/10/16
 # Name: Michael Nguyen
-# Description: Level of Soulsborne.
+# Description: Floor 1 of Soulsborne.
 
 
 import random
 import enemies
 import sys
 import items
+import npc
 
 
 class MapTile:
@@ -92,11 +93,83 @@ class ChampionsTile(MapTile):
 
 
 class SafeRoomTile(MapTile):
+    def __init__(self, x, y):
+        self.trader = npc.Trader()
+        super().__init__(x, y)
+
+    def trade(self, buyer, seller):
+        for i, item in enumerate(seller.inventory, 1):
+            print("{}. {} - {} Gold".format(i, item.name, item.value))
+        while True:
+            user_input = input("Choose an item or type 'quit' to quit: ")
+            if user_input in ['Quit', 'quit']:
+                return
+            else:
+                try:
+                    choice = int(user_input)
+                    to_swap = seller.inventory[choice - 1]
+                    self.swap(seller, buyer, to_swap)
+                except ValueError:
+                    print("Invalid choice!")
+
+    def swap(self, seller, buyer, item):
+        if item.value > buyer.gold:
+            print("You have no gold for that item!")
+            return
+        seller.inventory.remove(item)
+        buyer.inventory.append(item)
+        seller.gold = seller.gold + item.value
+        buyer.gold = buyer.gold - item.value
+        print("Barter Success!!")
+
+    def check_if_trade(self, player):
+        while True:
+            print("Would you like to Buy, Sell, or Quit?")
+            user_input = input()
+            if user_input in ['Quit', 'quit']:
+                return
+            elif user_input in ['Buy', 'buy']:
+                print("Here's whats available to buy: ")
+                self.trade(buyer=player, seller=self.trader)
+            elif user_input in ['Sell', 'sell']:
+                print("Here's whats available to sell: ")
+                self.trade(buyer=self.trader, seller=player)
+            else:
+                print("Invalid choice!")
+
     def intro_text(self):
         return """
         This is a Safe Room!
         You should be safe in here...probably.
+        There is a Merchant on this tile.
         """
+
+
+class GoldTile(MapTile):
+    """Position that offers gold to the player."""
+    def __init__(self, x, y):
+        self.gold = random.randint(20, 50)
+        self.gold_claimed = False
+        super().__init__(x, y)
+
+    def modify_player(self, player):
+        if not self.gold_claimed:
+            self.gold_claimed = True
+            player.gold = player.gold + self.gold
+            print("+ {} gold added.".format(self.gold))
+
+    def intro_text(self):
+        if self.gold_claimed:
+            return """
+            Well this tile seems useless now.
+            Let's move on.
+            """
+        else: 
+            return """
+            LOOK IT'S GOLD!
+            Imagine being the loser that dropped this!
+            You pick up the gold.
+            """
 
 
 class BoringTile(MapTile):
@@ -196,7 +269,7 @@ class ViewMapTile(MapTile):
     +-------+-------+-------+-------+-------+-------+-------+
     | Blank | Left  | Blank | Start |  Map  | Right | Blank |
     +-------+-------+-------+-------+-------+-------+-------+
-            | Blank | Blank | Champ | Blank | Blank |
+            | Blank | Gold  | Gold  | Gold  | Blank |
             +-------+-------+-------+-------+-------+
             | Blank | Blank |  Bot  | Blank | Blank |
             +-------+-------+-------+-------+-------+
@@ -228,7 +301,7 @@ class RightMap(MapTile):
                                 +-------+-------+-------+-------+-------+
                                 | Warn  | Blank | Safe  |  Boss | BLoot |
 +-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Blank | Items | Blank | Enemy | Blank |
+| Gold  | Items | Blank | Enemy | Gold  |
 +-------+-------+-------+-------+-------+
 | Enemy | Items | Blank | Enemy | Items |
 +-------+-------+-------+-------+-------+
@@ -236,9 +309,9 @@ class RightMap(MapTile):
 +-------+-------+-------+-------+-------+
 | Blank | Enemy | Items | Enemy | Blank |
 +-------+-------+-------+-------+-------+
-| Blank | Items | Enemy | Items | Enemy |
+| Blank | Items |  Map  | Items | Enemy |
 +-------+-------+-------+-------+-------+
-                |  Map  |
+                | Blank |
                 +-------+
                 | Blank |
 +-------+-------+-------+-------+-------+-------+
@@ -248,7 +321,7 @@ class RightMap(MapTile):
 +-------+-------+-------+-------+-------+
 |  Map  | Enemy | Enemy | Enemy | Blank |
 +-------+-------+-------+-------+-------+
-| Enemy | Blank | Enemy | Blank | Items |
+| Enemy | Gold  | Enemy | Gold  | Items |
 +-------+-------+-------+-------+-------+
 | Items | Items | Enemy | Blank | Blank |
 +-------+-------+-------+-------+-------+
@@ -278,7 +351,7 @@ class LeftMap(MapTile):
         self.floor_printable = """
 
 +-------+-------+-------+-------+-------+
-| Enemy | Items | Blank | Items | Enemy |
+| Enemy | Items | Gold  | Items | Enemy |
 +-------+-------+-------+-------+-------+
 | Blank | Items | Enemy | Blank | Enemy |
 +-------+-------+-------+-------+-------+
@@ -288,11 +361,11 @@ class LeftMap(MapTile):
 +-------+-------+-------+-------+-------+
 |  Opt  | Items | Enemy | Blank | Enemy |
 +-------+-------+-------+-------+-------+
-| Loot  |       | Blank |
+| Loot  |       | Gold  |
 +-------+       +-------+
-                |  Map  |
+                | Blank |
 +-------+-------+-------+-------+-------+
-| Enemy | Items | Blank | Items | Enemy |
+| Enemy | Items |  Map  | Items | Enemy |
 +-------+-------+-------+-------+-------+
 | Blank | Enemy | Items | Enemy | Blank |
 +-------+-------+-------+-------+-------+
@@ -343,9 +416,9 @@ class TopMap(MapTile):
                         +-------+               +-------+-------+-------+-------+-------+-------+
                         | Blank |               | Loot  |  Opt  | Blank | Items | Enemy | Enemy |
                         +-------+-------+       +-------+-------+-------+-------+-------+-------+
-                        | Enemy | Items |               | Enemy | Blank | Blank | Items | Items |
+                        | Enemy | Items |               | Enemy | Gold  | Blank | Items | Items |
 +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Loot  | Boss  | Enemy | Items | Safe  | Warn  | Blank | Blank | Enemy | Items | Items | Enemy |
+| Loot  | Boss  | Enemy | Items | Safe  | Warn  | Blank | Gold  | Enemy | Items | Items | Enemy |
 +-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
                         | Enemy | Items |               | Blank | Enemy | Enemy | Items | Blank |
                         +-------+-------+               +-------+-------+-------+-------+-------+
@@ -1748,21 +1821,21 @@ def tile_at(x, y):
 # Floor 1's map in abbreviations.
 floor_dsl = """
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |BW|BT|SF|BR|LR|
-|  |  |  |  |  |BT|  |  |SU|OT|BT|IT|ET|ET|  |  |  |  |BT|IR|BT|ER|BT|
-|  |  |  |  |  |ET|IT|  |  |ET|BT|BT|IT|IT|  |  |  |  |ER|IR|BT|ER|IR|
-|  |  |LT|BU|ET|IT|SF|BW|BT|BT|ET|IT|IT|ET|  |  |  |  |ER|ER|ER|IR|IR|
+|  |  |  |  |  |BT|  |  |SU|OT|BT|IT|ET|ET|  |  |  |  |GL|IR|BT|ER|GL|
+|  |  |  |  |  |ET|IT|  |  |ET|GL|BT|IT|IT|  |  |  |  |ER|IR|BT|ER|IR|
+|  |  |LT|BU|ET|IT|SF|BW|BT|GL|ET|IT|IT|ET|  |  |  |  |ER|ER|ER|IR|IR|
 |  |  |  |  |  |ET|IT|  |  |BT|ET|ET|IT|BT|  |  |  |  |BT|ER|IR|ER|BT|
 |  |  |  |  |  |BT|  |  |  |ET|ET|TM|BT|ET|  |  |  |  |BT|IR|RM|IR|ER|
 |  |  |  |  |  |  |  |  |  |  |  |BT|  |  |  |  |  |  |  |  |BT|
 |  |  |  |  |  |  |  |  |  |  |  |BT|  |  |  |  |  |  |  |  |BT|
-|EL|IL|BT|IL|EL|  |  |  |  |BT|BT|TP|BT|BT|  |  |  |  |ER|IR|BT|BT|OR|SR|
+|EL|IL|GL|IL|EL|  |  |  |  |BT|BT|TP|BT|BT|  |  |  |  |ER|IR|BT|BT|OR|SR|
 |BT|IL|EL|BT|EL|  |  |  |  |BT|IT|IT|IT|BT|  |  |  |  |ER|BT|IR|ER|BT|
 |EL|IL|IL|EL|LM|BT|BT|BT|BT|LP|BT|ST|MT|RP|BT|BT|BT|BT|RM|ER|ER|ER|BT|
-|IL|EL|BT|IL|EL|  |  |  |  |BT|BT|BT|BT|BT|  |  |  |  |ER|BT|ER|BT|IR|
+|IL|EL|BT|IL|EL|  |  |  |  |BT|GT|GT|GT|BT|  |  |  |  |ER|GL|ER|GL|IR|
 |OL|IL|EL|SF|EL|  |  |  |  |BT|BT|BP|BT|BT|  |  |  |  |IR|IR|ER|BT|BT|
-|SL|  |BT|  |  |  |  |  |  |  |  |BT|
-|  |  |LM|  |  |  |  |  |  |  |  |BT|
-|EL|IT|BT|IL|EL|  |  |  |  |EB|BT|BM|EB|IB|  |  |  |BT|
+|SL|  |GL|  |  |  |  |  |  |  |  |BT|
+|  |  |BT|  |  |  |  |  |  |  |  |BT|
+|EL|IT|LM|IL|EL|  |  |  |  |EB|BT|BM|EB|IB|  |  |  |BT|
 |BT|EL|IT|EL|BT|  |  |  |  |BT|IB|EB|EB|EB|  |  |IB|EB|
 |EL|IT|EL|IL|BT|  |  |  |  |EB|BT|IB|BT|EB|BT|BW|SF|BR|BL|AL|BU|BB|CH|
 |BT|EL|EL|IL|BT|  |  |  |  |BT|BT|EB|EB|BT|  |  |IB|EB|
@@ -1823,6 +1896,7 @@ tile_type_dict = {"ST": StartTile,
                   "EL": EnemyTileL,
                   "BT": BoringTile,
                   "MT": ViewMapTile,
+                  "GT": GoldTile,
                   "BR": BossTileR,
                   "BL": BossTileL,
                   "BU": BossTileT,
