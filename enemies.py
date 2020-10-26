@@ -16,9 +16,8 @@ class Enemy():
     def is_alive(self):
         return self.hp > 0
 
-# Floor 1 Enemies
 
-
+# Right Path Enemies
 # Slime enemy detailing its hp and damage.
 class Slime(Enemy):
     def __init__(self):
@@ -59,7 +58,7 @@ class Hollow_Knight(Enemy):
         self.damage = 13
 
 
-# King Slime boss detailing its hp and damage.
+# King Slime "Right" boss detailing its hp and damage.
 class King_Slime(Enemy):
     def __init__(self):
         self.name = "King Slime"
@@ -67,9 +66,8 @@ class King_Slime(Enemy):
         self.hp = 20
         self.damage = 10
 
-# Floor 2 Enemies
 
-
+# Left Path Enemies
 # Bonewheel Skeleton enemy detailing its hp and damage.
 class Bonewheel(Enemy):
     def __init__(self):
@@ -83,15 +81,23 @@ class Undead(Enemy):
     def __init__(self):
         self.name = "Undead Zombie"
         self.hp = 5
-        self.damage = 30
+        self.damage = 20
 
 
-# Troll enemy detailing its hp and damage.
-class Troll(Enemy):
+# Sun Knight enemy detailing its hp and damage.
+class Sun_Knight(Enemy):
     def __init__(self):
-        self.name = "Troll"
+        self.name = "Sun Knight"
         self.hp = 25
         self.damage = 15
+
+
+# Lancer enemy detailing its hp and damage.
+class Lancer(Enemy):
+    def __init__(self):
+        self.name = "Lancer"
+        self.hp = 25
+        self.damage = 10
 
 
 # Berserkerlot optional boss detailing its hp and damage.
@@ -103,7 +109,7 @@ class Beserkerlot(Enemy):
         self.damage = 25
 
 
-# Arturia boss detailing its hp and damage.
+# Arturia "Left" boss detailing its hp and damage.
 class Arturia(Enemy):
     def __init__(self):
         self.name = "King Arturia"
@@ -111,9 +117,8 @@ class Arturia(Enemy):
         self.hp = 65
         self.damage = 25
 
-# Floor 3 Enemies
 
-
+# Top Path Enemies
 # Hunter enemy detailing its hp and damage.
 class Hunter(Enemy):
     def __init__(self):
@@ -138,6 +143,14 @@ class Great_Wolf(Enemy):
         self.damage = 30
 
 
+# Giant enemy detailing its hp and damage.
+class Giant(Enemy):
+    def __init__(self):
+        self.name = "Giant"
+        self.hp = 40
+        self.damage = 15
+
+
 # Gwyn optional boss detailing its hp and damage.
 class Gwyn_Upholder_of_Peace(Enemy):
     def __init__(self):
@@ -147,7 +160,7 @@ class Gwyn_Upholder_of_Peace(Enemy):
         self.damage = 30
 
 
-# Soul of Cinder "final" boss detailing its hp and damage.
+# Soul of Cinder "Top" boss detailing its hp and damage.
 class Soul_of_Cinder(Enemy):
     def __init__(self):
         self.name = "Soul of Cinder"
@@ -155,31 +168,21 @@ class Soul_of_Cinder(Enemy):
         self.hp = 70
         self.damage = 35
 
-# Secret Floor Enemies
-
-
+# Bottom Path Enemies
 # Vessel enemy detailing its hp and damage.
 class Vessel(Enemy):
     def __init__(self):
         self.name = "Vessel"
         self.description = "The Souls of the condemned served as vessels."
-        self.hp = 5
+        self.hp = 1
         self.damage = 0
 
 
-# King Manus optional secret boss detailing its hp and damage.
-class King_Manus_The_First_Hero(Enemy):
+# King Manus "Final" Boss detailing its hp and damage.
+class Manus_The_First_Hero(Enemy):
     def __init__(self):
-        self.name = "King Manus, The First Hero"
+        self.name = "Manus, The First Hero"
         self.description = "None have survived Judgement."
         self.hp = 99
         self.damage = 50
 
-
-# The Vessel secret final boss detailing its hp and damage.
-class The_Holy_Grail(Enemy):
-    def __init__(self):
-        self.name = "The Holy Grail"
-        self.description = "The Holy Grail upholding the entire balance."
-        self.hp = 1
-        self.damage = 0
