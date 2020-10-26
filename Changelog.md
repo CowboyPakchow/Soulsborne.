@@ -1,6 +1,6 @@
 # RPG: Soulsborne Changelog
 
-vPrerelease
+**vPrerelease**
 - Game is currently in a prerelease state.
 - Added a README File
 - Added a Changelog
@@ -20,7 +20,7 @@ vPrerelease
 - Imported playerinventory, SimpleMenu and map to main file.
 
 
-v1.0
+**v1.0**
 - Game is in a playable state.
 - Removed Armour.py and Weapons.py in place of everything in items.py
 - Removed character.py in place of player.py
@@ -32,15 +32,34 @@ v1.0
 - Currently only 1 basic shield is available.
 - Item tiles only contain potions as of now.
 
+**v1.01** 
+- Enemies Hp and Attack altered for slightly easier experience in early game.
+  - That being said, enemy in harder rooms are slightly harder.
+- Different rooms have different enemies.
+- Fixed a bug that did not allow the player to attack in optional boss rooms.
+- Fixed a bug that did not display the correct tiles on the map.
+- Raise Player HP cap to 60.
+- Buffed some Weapons and armour. 
+
+**v1.1**
+- Map Overhaul has been implemented.
+- Bosses for each Boss tile have been implemented.
+- Optional Bosses for each Optional tile have been implemented.
+- Loot for Bosses & Optional Bosses have been implemented.
+- New Weapons and Armour from Loot.
+- Ending to Game has been implemented.
 
 
-Upcoming/Planned
-- Currently Boss of the first floor planned for version 1.1
-  - Game ends after reaching Boss Tile.
-- Merchants that appear in Safe Rooms are planned for version 1.1
-- Floor 2 possibly planned for version 1.2
-- Gold Tiles are planned for 1.1
-- Item drops planned for 1.2
-- More armour items are planned for 1.2
-- More weapons are planned for 1.2
-- Monster drops planned for 1.1 or 1.2
+
+**Upcoming/Planned**
+- ~~Currently Boss of the first floor planned for version 1.1~~ *X*
+  - ~~Game ends after reaching Boss Tile.~~ *X*
+- Merchants that appear in Safe Rooms are planned for version 1.2
+- ~~Floor 2 possibly planned for version 1.2~~ *X*
+- Gold Tiles are planned for 1.2
+- ~~More armour items are planned for 1.1~~ **✓**
+- ~~More weapons are planned for 1.1~~ **✓**
+- ~~Complete overhaul of the map for 1.1~~ **✓**
+- ~~Ending to the game planned for **1.1** or 1.2~~ **✓**
+- ~~More Bosses & Optional bosses for 1.1~~ **✓**
+- ~~Loot for Bosses & Optional Bosses for 1.1~~ **✓**
