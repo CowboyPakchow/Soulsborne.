@@ -94,5 +94,5 @@
 - ~~Gold tiles give gold~~ **✓**
 
 **Beta Test Results**
-- Map System needs to be changed in the near future.
+- Map System might require a change in the near future. 
 - Other than that, testers were satisfied with the game.
