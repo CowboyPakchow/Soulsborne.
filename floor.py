@@ -1232,7 +1232,7 @@ class BossTileB(MapTile):
                 sys.exit()
 
 
-class OptionalTileR(MapTile):
+class OptTileR(MapTile):
     def __init__(self, x, y):
         self.a = 0
         self.d = 0
@@ -1293,7 +1293,7 @@ class OptionalTileR(MapTile):
                 sys.exit()
 
 
-class OptionalTileL(MapTile):
+class OptTileL(MapTile):
     def __init__(self, x, y):
         self.a = 0
         self.d = 0
@@ -1354,7 +1354,7 @@ class OptionalTileL(MapTile):
                 sys.exit()
 
 
-class OptionalTileT(MapTile):
+class OptTileT(MapTile):
     def __init__(self, x, y):
         self.a = 0
         self.d = 0
@@ -1905,9 +1905,9 @@ tile_type_dict = {"ST": StartTile,
                   "BL": BossTileL,
                   "BU": BossTileT,
                   "BB": BossTileB,
-                  "OR": OptionalTileR,
-                  "OL": OptionalTileL,
-                  "OT": OptionalTileT,
+                  "OR": OptTileR,
+                  "OL": OptTileL,
+                  "OT": OptTileT,
                   "SL": SpecialLootL,
                   "SR": SpecialLootR,
                   "SU": SpecialLootT,

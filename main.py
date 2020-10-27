@@ -73,7 +73,7 @@ def actions_available(position, player):
     # Prints the map of the Starting Room.
     if isinstance(position, floor.ViewMapTile):
         add_action(actions, "Map", position.print_map, "Floor Map")
-    if isinstance(position,floor.RightMap):
+    if isinstance(position, floor.RightMap):
         add_action(actions, "Map", position.print_map, "Right Path Map")
     if isinstance(position, floor.LeftMap):
         add_action(actions, "Map", position.print_map, "Left Path Map")
@@ -119,13 +119,13 @@ def actions_available(position, player):
     elif isinstance(position, floor.EnemyTileB) and position.enemy.is_alive():
         add_action(actions, "Attack", player.attack, "Attack")
         add_action(actions, "Defend", player.defend, "Defend")
-    elif isinstance(position, floor.OptionalTileL) and position.enemy.is_alive():
+    elif isinstance(position, floor.OptTileL) and position.enemy.is_alive():
         add_action(actions, "Attack", player.attack, "Attack")
         add_action(actions, "Defend", player.defend, "Defend")
-    elif isinstance(position, floor.OptionalTileR) and position.enemy.is_alive():
+    elif isinstance(position, floor.OptTileR) and position.enemy.is_alive():
         add_action(actions, "Attack", player.attack, "Attack")
         add_action(actions, "Defend", player.defend, "Defend")
-    elif isinstance(position, floor.OptionalTileT) and position.enemy.is_alive():
+    elif isinstance(position, floor.OptTileT) and position.enemy.is_alive():
         add_action(actions, "Attack", player.attack, "Attack")
         add_action(actions, "Defend", player.defend, "Defend")
     elif isinstance(position, floor.BossTileR) and position.enemy.is_alive():
