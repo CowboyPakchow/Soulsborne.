@@ -14,12 +14,17 @@ class Player:
     """Player class with inventory and strongest weapon in inventory."""
     def __init__(self):
         # Items that are in the player's inventory at the beginning.
-        self.inventory = [items.Rapier(), items.Basic_Shield()]
+        self.inventory = [items.Rapier(), items.Basic_Shield(), items.Abysswalker(), items.Abysswalker_Arm()]
         # Starting coordinates of the player.
         self.x = floor.start_tile_location[0]
         self.y = floor.start_tile_location[1]
         self.hp = 60
         self.victory = False
+        self.gold = 5
+
+    def trade(self):
+        room = floor.tile_at(self.x, self.y)
+        room.check_if_trade(self)
 
     def is_alive(self):
         """The player is still alive when their hp is at least 1."""
@@ -32,6 +37,7 @@ class Player:
             print("* " + str(item))
         op_weapon = self.most_powerful_weapon()
         print("Your strongest weapon is your {}".format(op_weapon))
+        print("Gold: {}".format(self.gold))
 
     def most_powerful_weapon(self):
         """Determines the weapon that is the most powerful in the inventory."""
