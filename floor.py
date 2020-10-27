@@ -72,7 +72,9 @@ class ChampionsTile(MapTile):
         Oh right...
         You were only a part of my imagination.
         Back to being alone...
+        My Hollow Shell yearns for repentance.
 
+        
         End.
         """
 
