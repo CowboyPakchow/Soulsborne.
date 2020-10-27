@@ -20,6 +20,7 @@ class Rapier(Weapon):
         self.name = "Rapier"
         self.description = "A Slender Sword."
         self.damage = 10
+        self.value = 10
 
 
 class Broadsword(Weapon):
@@ -27,6 +28,7 @@ class Broadsword(Weapon):
         self.name = "Broadsword"
         self.description = "Slightly better than the Rapier?..."
         self.damage = 15
+        self.value = 15
 
 
 class Greatsword(Weapon):
@@ -34,6 +36,7 @@ class Greatsword(Weapon):
         self.name = "Greatsword"
         self.description = "A Large Sword, quite powerful in fact."
         self.damage = 20
+        self.value = 20
 
 
 class Hollow_Blade(Weapon):
@@ -41,6 +44,7 @@ class Hollow_Blade(Weapon):
         self.name = "Hollow Blade"
         self.description = "A sword given to all the Knights of Arturia."
         self.damage = 25
+        self.value = 30
 
 
 # Left Path Weapons.
@@ -49,6 +53,7 @@ class Zombie_Arm(Weapon):
         self.name = "Zombie Arm"
         self.description = "What? Why? Why would you use this thing?"
         self.damage = 5
+        self.value = 1
 
 
 class Secace(Weapon):
@@ -56,6 +61,7 @@ class Secace(Weapon):
         self.name = "Secace"
         self.description = "A mad knight's sword from a distant land..."
         self.damage = 35
+        self.value = 60
 
 
 class Excalibrate(Weapon):
@@ -63,6 +69,7 @@ class Excalibrate(Weapon):
         self.name = "Excalibrate"
         self.description = "From the challenges of The Dungeonmaster..."
         self.damage = 45
+        self.value = 90
 
 
 # Top Path Weapons
@@ -71,6 +78,7 @@ class Cinderhulk(Weapon):
         self.name = "Cinderhulk"
         self.description = "The Flame has never been extinguished."
         self.damage = 65
+        self.value = 120
 
 
 # Bottom Path Weapons.
@@ -79,6 +87,7 @@ class Abysswalker(Weapon):
         self.name = "Abysswalker"
         self.description = "From beyond and back."
         self.damage = 80
+        self.value = 170
 
 
 class Armour:
@@ -94,6 +103,7 @@ class Basic_Shield(Armour):
         self.name = "Basic Shield"
         self.description = "A basic shield for blocking, nothing special."
         self.protection = 15
+        self.value = 10
 
 
 class Hollow_Shield(Armour):
@@ -101,6 +111,7 @@ class Hollow_Shield(Armour):
         self.name = "Hollow Shield"
         self.description = "A shield given out to the knights of Arturia."
         self.protection = 25
+        self.value = 25
 
 
 class Slime_Barrier(Armour):
@@ -108,6 +119,7 @@ class Slime_Barrier(Armour):
         self.name = "Slime Barrier"
         self.description = "A Protective Coating."
         self.protection = 35
+        self.value = 50
 
 
 # Left Path Armour.
@@ -116,6 +128,7 @@ class Galahad_Shield(Armour):
         self.name = "Galahad's Shield"
         self.description = "A pure shield."
         self.protection = 50
+        self.value = 100
 
 
 # Top Path Armour.
@@ -124,6 +137,7 @@ class Guardians_Safeguard(Armour):
         self.name = "Guardian's Safeguard"
         self.description = "The Guardian's Will"
         self.protection = 70
+        self.value = 150
 
 
 # Bottom Path Armour.
@@ -132,6 +146,7 @@ class Abysswalker_Arm(Armour):
         self.name = "Abysswalker's Arm"
         self.description = "The Left Arm Armour of Artorias, the ancient."
         self.protection = 90
+        self.value = 200
 
 
 class Consumable:
@@ -147,6 +162,7 @@ class Potion(Consumable):
         self.name = "Potion"
         self.description = "Potion for healing purposes."
         self.healing = 10
+        self.value = 20
 
 
 class Great_Potion(Consumable):
@@ -154,6 +170,7 @@ class Great_Potion(Consumable):
         self.name = "Great Potion"
         self.description = "Greater healing from this potion."
         self.healing = 15
+        self.value = 40
 
 
 class Estus(Consumable):
@@ -161,6 +178,7 @@ class Estus(Consumable):
         self.name = "Estus Flask"
         self.description = "Healing potion...seems familiar..."
         self.healing = 25
+        self.value = 60
 
 
 class Humanity(Consumable):
@@ -168,22 +186,6 @@ class Humanity(Consumable):
         self.name = "Humanity"
         self.description = "Restores full hp...is this a soul of a life?!"
         self.healing = 99
+        self.value = 250
 
-
-class Misc:
-    def __init__(self):
-        raise NotImplementedError("Do no create raw Misc objects.")
-
-    def __str__(self):
-        return "{} ({})".format(self.name, self.description)
-
-class Gold_Coins(Misc):
-    def __init__(self):
-        self.name = "Gold Coins"
-        self.description = "Coins for bartering"
-
-class Champions_Chalice(Misc):
-    def __init__(self):
-        self.name = "Champions Chalice"
-        self.description = "The end is the beginning, take this back to start."
         
