@@ -69,7 +69,7 @@
 - ~~More Bosses & Optional bosses for 1.1~~ **✓**
 - ~~Loot for Bosses & Optional Bosses for 1.1~~ **✓**
 - ~~Alpha Testing Underway.~~ **✓**
-- Beta Testing Soon. (Arden G Tested.)
+- Beta Testing Soon. 
 
 **Bugs**
 - ~~Unable to sell to Merchant with >100 Value items~~ **Fixed** Increased Merchant gold.
@@ -77,3 +77,17 @@
 - ~~Items not displaying any value or desc.~~ **Fixed** Added () for inventory items.
 - ~~Error with Gold Tiles.~~ **Fixed** Some tiles listed as GL and not GT
 - ~~Bug where merchant inventory did not update after buying item~~ **Fixed**
+
+**Alpha Test Results**
+- ~~Game Runs~~ **✓**
+- ~~Game can be beaten~~ **✓**
+- ~~Player dies when 0 hp~~ **✓**
+- ~~Enemy dies when 0 hp~~ **✓**
+- ~~Trading with Merchant works~~ **✓**
+- ~~Loot and Items are able to be taken~~ **✓**
+- ~~Consumables will be consumed from inventory~~ **✓**
+- ~~Healing Consumables apply appropriate hp to player~~ **✓**
+- ~~Weapons do appropriate damage~~ **✓**
+- ~~Defense items remove damage from enemy~~ **✓**
+- ~~Defense items consumed from inventory~~ **✓**
+- ~~Gold tiles give gold~~ **✓**
