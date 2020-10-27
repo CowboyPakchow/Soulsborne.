@@ -1,7 +1,7 @@
 # Course: CS 30
 # Period: 1
 # Date Created: 20/09/21
-# Date Modified: 20/10/16
+# Date Modified: 20/10/26
 # Name: Michael Nguyen
 # Description: Main file to run Soulsborne.
 
@@ -81,6 +81,8 @@ def actions_available(position, player):
         add_action(actions, "Map", position.print_map, "Top Path Map")
     if isinstance(position, floor.BotMap):
         add_action(actions, "Map", position.print_map, "Bot Path Map")
+    if isinstance(position, floor.SafeRoomTile):
+        add_action(actions, "Trade", player.trade, "Trade")
     # Add an option for items if there are any items remaining.
     if isinstance(position, floor.ItemTileL) and position.inventory:
         add_action(actions, "Add", player.add_items, "Add Items")
