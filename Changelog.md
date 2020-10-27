@@ -53,7 +53,9 @@
 - Merchant added to Safe Rooms.
 - Gold Tiles have been implemented.
 
-
+**v1.3**
+- AFter Alpha Testing + Beta Testing, game is fully released.
+- Game might still receive updates later on (If i just want to add on to the game after CS30 ends)
 
 
 **Upcoming/Planned**
