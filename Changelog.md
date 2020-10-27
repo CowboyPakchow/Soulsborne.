@@ -92,3 +92,7 @@
 - ~~Defense items remove damage from enemy~~ **✓**
 - ~~Defense items consumed from inventory~~ **✓**
 - ~~Gold tiles give gold~~ **✓**
+
+**Beta Test Results**
+- Map System needs to be changed in the near future.
+- Other than that, testers were satisfied with the game.
