@@ -38,7 +38,7 @@
 - Different rooms have different enemies.
 - Fixed a bug that did not allow the player to attack in optional boss rooms.
 - Fixed a bug that did not display the correct tiles on the map.
-- Raise Player HP cap to 60.
+- Raise Player HP cap to 90.
 - Buffed some Weapons and armour. 
 
 **v1.1**
