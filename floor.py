@@ -14,7 +14,7 @@ import npc
 
 
 class MapTile:
-    """ The map with X and Y Coordinates"""
+    """ The map with X and Y Coordinates."""
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -41,13 +41,15 @@ class StartTile(MapTile):
         return """
         You awaken to find yourself trapped in a dungeon of sorts.
         You must escape by reaching the Champion Tile. (Bottom Floor.)
+
         You may check through your inventory to see what is on hand.
         There are 4 directions to move in, North, South, East, West.
-        Head East to use the map that details the current room you're in.
+        Head East to use the Map that details the current room you're in.
+
         Good luck weary traveler, "May the Sapphire Star Guide you."
-        Now that's a cool line.
-        Thanks! It was from Monster Hunter World!
-        oh.
+        "Now that's a cool line."
+        "Thanks! It was from Monster Hunter World!"
+        "oh.""
         """
 
 
@@ -55,7 +57,7 @@ class ChampionsTile(MapTile):
     def intro_text(self):
         """Description for the Champions Tile."""
         return """
-        Long ago there was a champion who made it to safety.
+        "Long ago there was a champion who made it to safety.
         Slaying all in his path, he spared none.
         On and on, he never stopped slaying.
         Until he himself, became a husk of the dungeon.
@@ -65,19 +67,18 @@ class ChampionsTile(MapTile):
         But a new path opened, for any brave.
         Any who can overcome the trials.
         To leave.
-        I was the only one.
+        I was the only one."
         """
 
     def intro_text2(self):
         """Description for Epilogue."""
         return """
-        Well I guess that concludes my story.
+        "Well I guess that concludes my story.
         Lucky we got out of there right buddy?
         Buddy?..
         Oh right...
         You were only a part of my imagination.
-        Back to being alone...
-        My Hollow Shell yearns for repentance.
+        Back to being alone..."
 
 
         End.
@@ -100,6 +101,7 @@ class ChampionsTile(MapTile):
 
 
 class SafeRoomTile(MapTile):
+    """Position where player can trade with NPC."""
     def __init__(self, x, y):
         self.trader = npc.Trader()
         super().__init__(x, y)
@@ -269,7 +271,7 @@ class ViewMapTile(MapTile):
         """
 
     def print_map(self):
-        """Prints a map of the entire floor (You are on Map Tile)"""
+        """Prints a map of the entire floor. (You are on Map Tile)"""
         self.floor_printable = """
                             +-------+
                             | Blank |
@@ -287,11 +289,11 @@ class ViewMapTile(MapTile):
                             | Blank |
                             +-------+
 
-        We recommend you go right first as it is the easier experience.
+        "We recommend you go right first as it is the easier experience.
         Of course you don't need to listen.
         You'll just be making your life a lot harder.
-        We really mean that.
-        ...Who's we? Isn't it just you???
+        We really mean that.""
+        "...Who's we? Isn't it just you???"
         """
         print(self.floor_printable)
 
@@ -299,7 +301,7 @@ class ViewMapTile(MapTile):
 class RightMap(MapTile):
     """Position that prints map of Right Path."""
     def intro_text(self):
-        """Description for RightMap Tile"""
+        """Description for RightMap Tile."""
         return """
         There is a map in the room.
         The map displays...
