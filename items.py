@@ -97,6 +97,7 @@ class Armour:
     def __str__(self):
         return "{} (- {} Damage)".format(self.name, self.protection)
 
+
 # Right Path Armour.
 class Basic_Shield(Armour):
     def __init__(self):
@@ -187,5 +188,3 @@ class Humanity(Consumable):
         self.description = "Restores full hp...is this a soul of a life?!"
         self.healing = 99
         self.value = 250
-
-        
