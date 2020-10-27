@@ -61,6 +61,11 @@ class ChampionsTile(MapTile):
         Until he himself, became a husk of the dungeon.
         What's left of him is only a chalice.
         A chalice that frees the souls.
+        The Chalice was never found again.
+        But a new path opened, for any brave.
+        Any who can overcome the trials.
+        To leave.
+        I was the only one.
         """
 
     def intro_text2(self):
@@ -74,7 +79,7 @@ class ChampionsTile(MapTile):
         Back to being alone...
         My Hollow Shell yearns for repentance.
 
-        
+
         End.
         """
 
