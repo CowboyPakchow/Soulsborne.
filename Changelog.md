@@ -49,17 +49,24 @@
 - New Weapons and Armour from Loot.
 - Ending to Game has been implemented.
 
+**v1.2**
+- Merchant added to Safe Rooms.
+- Gold Tiles have been implemented.
+
+
 
 
 **Upcoming/Planned**
 - ~~Currently Boss of the first floor planned for version 1.1~~ *X*
   - ~~Game ends after reaching Boss Tile.~~ *X*
-- Merchants that appear in Safe Rooms are planned for version 1.2
+- ~~Merchants that appear in Safe Rooms are planned for version 1.2~~ **✓**
 - ~~Floor 2 possibly planned for version 1.2~~ *X*
-- Gold Tiles are planned for 1.2
+- ~~Gold Tiles are planned for 1.2~~ **✓**
 - ~~More armour items are planned for 1.1~~ **✓**
 - ~~More weapons are planned for 1.1~~ **✓**
 - ~~Complete overhaul of the map for 1.1~~ **✓**
 - ~~Ending to the game planned for **1.1** or 1.2~~ **✓**
 - ~~More Bosses & Optional bosses for 1.1~~ **✓**
 - ~~Loot for Bosses & Optional Bosses for 1.1~~ **✓**
+- Alpha Testing Underway.
+- Beta Testing Soon.
