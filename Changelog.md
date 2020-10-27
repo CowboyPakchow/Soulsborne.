@@ -68,8 +68,8 @@
 - ~~Ending to the game planned for **1.1** or 1.2~~ **✓**
 - ~~More Bosses & Optional bosses for 1.1~~ **✓**
 - ~~Loot for Bosses & Optional Bosses for 1.1~~ **✓**
-- Alpha Testing Underway.
-- Beta Testing Soon.
+- ~~Alpha Testing Underway.~~ **✓**
+- Beta Testing Soon. (Arden G Tested.)
 
 **Bugs**
 - ~~Unable to sell to Merchant with >100 Value items~~ **Fixed** Increased Merchant gold.
