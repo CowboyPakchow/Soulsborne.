@@ -41,6 +41,7 @@ class Lizard(Enemy):
         self.hp = 15
         self.damage = 7
 
+
 # Skeleton enemy detailing its hp and damage
 class Skeleton(Enemy):
     def __init__(self):
@@ -168,6 +169,7 @@ class Soul_of_Cinder(Enemy):
         self.hp = 70
         self.damage = 35
 
+
 # Bottom Path Enemies
 # Vessel enemy detailing its hp and damage.
 class Vessel(Enemy):
@@ -185,4 +187,3 @@ class Manus_The_First_Hero(Enemy):
         self.description = "None have survived Judgement."
         self.hp = 99
         self.damage = 50
-
