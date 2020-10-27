@@ -76,3 +76,4 @@
 - ~~Map and actual tiles not matched~~ **Fixed** Added | | to act as empty spaces.
 - ~~Items not displaying any value or desc.~~ **Fixed** Added () for inventory items.
 - ~~Error with Gold Tiles.~~ **Fixed** Some tiles listed as GL and not GT
+- ~~Bug where merchant inventory did not update after buying item~~ **Fixed**
