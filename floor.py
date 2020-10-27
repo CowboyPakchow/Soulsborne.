@@ -189,7 +189,7 @@ class BoringTile(MapTile):
 
 
 class RightPath(MapTile):
-    """Position that descrILes Right Path of Dungeoon."""
+    """Position that describes Right Path of Dungeoon."""
     def intro_text(self):
         """Description for Right Path Tile."""
         return """
