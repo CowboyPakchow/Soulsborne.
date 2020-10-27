@@ -17,6 +17,7 @@ class NonPlayableCharacter():
 
 
 class Trader(NonPlayableCharacter):
+    # Creating Trader character for player to trade with.
     def __init__(self):
         self.name = "Merchant"
         self.gold = 1000

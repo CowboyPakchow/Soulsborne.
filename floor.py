@@ -1664,9 +1664,9 @@ class EnemyTileL(MapTile):
 
 
 class EnemyTileT(MapTile):
-    """Enemy position and messages"""
+    """Enemy position and messages."""
     def __init__(self, x, y):
-        """Creates a random position for each enemy"""
+        """Creates a random position for each enemy."""
         # Indices of j and k to switch out alive and dead messages.
         self.a = 0
         self.d = 0
@@ -1832,7 +1832,7 @@ def tile_at(x, y):
         return None
 
 
-# Floor 1's map in abbreviations.
+# Entire Floor map in abbreviations.
 floor_dsl = """
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |BW|BT|SF|BR|LR|
 |  |  |  |  |  |BT|  |  |SU|OT|BT|IT|ET|ET|  |  |  |  |GT|IR|BT|ER|GT|
@@ -1862,7 +1862,7 @@ floor_dsl = """
 |BL|
 |LL|
 """
-# make different map tiles that display multiple maps and areas
+# Make different map tiles that display multiple maps and areas
 
 
 def is_dsl_valid(dsl):
