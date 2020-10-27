@@ -7,6 +7,7 @@
 
 import items
 
+
 class NonPlayableCharacter():
     def __init__(self):
         raise NotImplementedError("Do not create raw NPC objects.")
@@ -19,9 +20,12 @@ class Trader(NonPlayableCharacter):
     def __init__(self):
         self.name = "Merchant"
         self.gold = 1000
-        self.inventory = [items.Estus(), items.Humanity(), items.Greatsword(),
-                          items.Broadsword(), items.Great_Potion(), items.Potion(),
-                          items.Potion(), items.Great_Potion(), 
-                          items.Great_Potion(), items.Great_Potion(), 
-                          items.Great_Potion(), items.Potion(),
-                          items.Potion(), items.Great_Potion(), items.Potion(),]
+        self.inventory = [items.Estus(), items.Humanity(),
+                          items.Greatsword(),
+                          items.Broadsword(), items.Great_Potion(),
+                          items.Potion(),
+                          items.Potion(), items.Great_Potion(),
+                          items.Great_Potion(), items.Great_Potion(),
+                          items.Great_Potion(),
+                          items.Potion(),
+                          items.Potion(), items.Great_Potion(), items.Potion()]
