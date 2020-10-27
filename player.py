@@ -18,7 +18,7 @@ class Player:
         # Starting coordinates of the player.
         self.x = floor.start_tile_location[0]
         self.y = floor.start_tile_location[1]
-        self.hp = 60
+        self.hp = 90
         self.victory = False
         self.gold = 5
 
@@ -111,8 +111,8 @@ class Player:
             choice = input("")
             try:
                 to_use = consumables[int(choice) - 1]
-                # HP cap is 60.
-                self.hp = min(60, self.hp + to_use.healing)
+                # HP cap is 90.
+                self.hp = min(90, self.hp + to_use.healing)
                 # Removes the used item from the inventory.
                 # Prints current amount of health potions in inventory.
                 self.inventory.remove(to_use)
