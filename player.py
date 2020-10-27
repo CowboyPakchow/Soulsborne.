@@ -183,4 +183,3 @@ class Player:
                 sys.exit()
             else:
                 break
-    
