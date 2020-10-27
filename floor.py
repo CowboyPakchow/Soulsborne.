@@ -849,7 +849,7 @@ class BossWarning(MapTile):
     def intro_text(self):
         """Description of Boss Warning Tile"""
         return """
-        There's a chilling presence down your spine 4 tiles away from you...
+        There's a chilling presence down your spine near you...
         I wonder what it could be?
         Treasure? Glory?
         A game over?
@@ -882,7 +882,7 @@ class BossTileR(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1077,7 +1077,7 @@ class BossTileL(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1096,7 +1096,7 @@ class BossTileL(MapTile):
 
     def modify_player(self, player):
         """
-        Checks the enemy's current strength so it can respond to the player
+        Checks the enemy's current strength so it can respond to the player.
         """
         if self.enemy.is_alive():
             # If the player has hp remaining, continue the game.
@@ -1138,7 +1138,7 @@ class BossTileT(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1157,7 +1157,7 @@ class BossTileT(MapTile):
 
     def modify_player(self, player):
         """
-        Checks the enemy's current strength so it can respond to the player
+        Checks the enemy's current strength so it can respond to the player.
         """
         if self.enemy.is_alive():
             # If the player has hp remaining, continue the game.
@@ -1190,13 +1190,14 @@ class BossTileB(MapTile):
         Wait I seriously beat that thing?!
         Huh, I really didn't think you could.
         Congratulations!
+        Head East to finally get away from this mess...
         """
         dead_return = "The Fear disperses..."
         self.dead_text = [dead_start, dead_return]
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points.."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1215,7 +1216,7 @@ class BossTileB(MapTile):
 
     def modify_player(self, player):
         """
-        Checks the enemy's current strength so it can respond to the player
+        Checks the enemy's current strength so it can respond to the player.
         """
         if self.enemy.is_alive():
             # If the player has hp remaining, continue the game.
@@ -1257,7 +1258,7 @@ class OptTileR(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1318,7 +1319,7 @@ class OptTileL(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1380,7 +1381,7 @@ class OptTileT(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
@@ -1791,7 +1792,7 @@ class EnemyTileB(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        """Intro message dependent on enemy health points"""
+        """Intro message dependent on enemy health points."""
         if self.enemy.is_alive():
             # Intro message changes as the player attacks the enemy.
             if self.a == 0:
