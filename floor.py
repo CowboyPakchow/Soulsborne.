@@ -40,7 +40,7 @@ class StartTile(MapTile):
         """Description for the Start Tile."""
         return """
         You awaken to find yourself trapped in a dungeon of sorts.
-        You must escape by reaching the Champion Tile. (Located in Bottom Floor.)
+        You must escape by reaching the Champion Tile. (Bottom Floor.)
         You may check through your inventory to see what is on hand.
         There are 4 directions to move in, North, South, East, West.
         Head East to use the map that details the current room you're in.
@@ -168,7 +168,7 @@ class GoldTile(MapTile):
             Well this tile seems useless now.
             Let's move on.
             """
-        else: 
+        else:
             return """
             LOOK IT'S GOLD!
             Imagine being the loser that dropped this!
