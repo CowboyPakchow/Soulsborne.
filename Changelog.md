@@ -70,3 +70,9 @@
 - ~~Loot for Bosses & Optional Bosses for 1.1~~ **✓**
 - Alpha Testing Underway.
 - Beta Testing Soon.
+
+**Bugs**
+- ~~Unable to sell to Merchant with >100 Value items~~ **Fixed** Increased Merchant gold.
+- ~~Map and actual tiles not matched~~ **Fixed** Added | | to act as empty spaces.
+- ~~Items not displaying any value or desc.~~ **Fixed** Added () for inventory items.
+- ~~Error with Gold Tiles.~~ **Fixed** Some tiles listed as GL and not GT

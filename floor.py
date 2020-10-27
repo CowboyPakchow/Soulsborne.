@@ -40,7 +40,7 @@ class StartTile(MapTile):
         """Description for the Start Tile."""
         return """
         You awaken to find yourself trapped in a dungeon of sorts.
-        You must escape by defeating the four guardians of the dungeon.
+        You must escape by reaching the Champion Tile. (Located in Bottom Floor.)
         You may check through your inventory to see what is on hand.
         There are 4 directions to move in, North, South, East, West.
         Head East to use the map that details the current room you're in.
@@ -98,7 +98,7 @@ class SafeRoomTile(MapTile):
         super().__init__(x, y)
 
     def trade(self, buyer, seller):
-        for i, item in enumerate(seller.inventory, 1):
+        for i, item in enumerate(seller.inventory, 0):
             print("{}. {} - {} Gold".format(i, item.name, item.value))
         while True:
             user_input = input("Choose an item or type 'quit' to quit: ")
@@ -107,7 +107,7 @@ class SafeRoomTile(MapTile):
             else:
                 try:
                     choice = int(user_input)
-                    to_swap = seller.inventory[choice - 1]
+                    to_swap = seller.inventory[choice]
                     self.swap(seller, buyer, to_swap)
                 except ValueError:
                     print("Invalid choice!")
@@ -142,6 +142,10 @@ class SafeRoomTile(MapTile):
         This is a Safe Room!
         You should be safe in here...probably.
         There is a Merchant on this tile.
+        You can trade with him.
+        Note that once you buy something it gets taken off the list.
+        Ex: 1. Humanity 2. Greatsword -> Buy Humanity
+            1. Greatsword
         """
 
 
@@ -267,7 +271,7 @@ class ViewMapTile(MapTile):
             +-------+-------+-------+-------+-------+
             | Blank | Items | Items | Items | Blank |
     +-------+-------+-------+-------+-------+-------+-------+
-    | Blank | Left  | Blank | Start |  Map  | Right | Blank |
+    | Blank | Left  | SafeR | Start |  Map  | Right | Blank |
     +-------+-------+-------+-------+-------+-------+-------+
             | Blank | Gold  | Gold  | Gold  | Blank |
             +-------+-------+-------+-------+-------+
@@ -1821,19 +1825,19 @@ def tile_at(x, y):
 # Floor 1's map in abbreviations.
 floor_dsl = """
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |BW|BT|SF|BR|LR|
-|  |  |  |  |  |BT|  |  |SU|OT|BT|IT|ET|ET|  |  |  |  |GL|IR|BT|ER|GL|
-|  |  |  |  |  |ET|IT|  |  |ET|GL|BT|IT|IT|  |  |  |  |ER|IR|BT|ER|IR|
-|  |  |LT|BU|ET|IT|SF|BW|BT|GL|ET|IT|IT|ET|  |  |  |  |ER|ER|ER|IR|IR|
+|  |  |  |  |  |BT|  |  |SU|OT|BT|IT|ET|ET|  |  |  |  |GT|IR|BT|ER|GT|
+|  |  |  |  |  |ET|IT|  |  |ET|GT|BT|IT|IT|  |  |  |  |ER|IR|BT|ER|IR|
+|  |  |LT|BU|ET|IT|SF|BW|BT|GT|ET|IT|IT|ET|  |  |  |  |ER|ER|ER|IR|IR|
 |  |  |  |  |  |ET|IT|  |  |BT|ET|ET|IT|BT|  |  |  |  |BT|ER|IR|ER|BT|
 |  |  |  |  |  |BT|  |  |  |ET|ET|TM|BT|ET|  |  |  |  |BT|IR|RM|IR|ER|
 |  |  |  |  |  |  |  |  |  |  |  |BT|  |  |  |  |  |  |  |  |BT|
 |  |  |  |  |  |  |  |  |  |  |  |BT|  |  |  |  |  |  |  |  |BT|
-|EL|IL|GL|IL|EL|  |  |  |  |BT|BT|TP|BT|BT|  |  |  |  |ER|IR|BT|BT|OR|SR|
+|EL|IL|GT|IL|EL|  |  |  |  |BT|BT|TP|BT|BT|  |  |  |  |ER|IR|BT|BT|OR|SR|
 |BT|IL|EL|BT|EL|  |  |  |  |BT|IT|IT|IT|BT|  |  |  |  |ER|BT|IR|ER|BT|
-|EL|IL|IL|EL|LM|BT|BT|BT|BT|LP|BT|ST|MT|RP|BT|BT|BT|BT|RM|ER|ER|ER|BT|
-|IL|EL|BT|IL|EL|  |  |  |  |BT|GT|GT|GT|BT|  |  |  |  |ER|GL|ER|GL|IR|
+|EL|IL|IL|EL|LM|BT|BT|BT|BT|LP|SF|ST|MT|RP|BT|BT|BT|BT|RM|ER|ER|ER|BT|
+|IL|EL|BT|IL|EL|  |  |  |  |BT|GT|GT|GT|BT|  |  |  |  |ER|GT|ER|GT|IR|
 |OL|IL|EL|SF|EL|  |  |  |  |BT|BT|BP|BT|BT|  |  |  |  |IR|IR|ER|BT|BT|
-|SL|  |GL|  |  |  |  |  |  |  |  |BT|
+|SL|  |GT|  |  |  |  |  |  |  |  |BT|
 |  |  |BT|  |  |  |  |  |  |  |  |BT|
 |EL|IT|LM|IL|EL|  |  |  |  |EB|BT|BM|EB|IB|  |  |  |BT|
 |BT|EL|IT|EL|BT|  |  |  |  |BT|IB|EB|EB|EB|  |  |IB|EB|
