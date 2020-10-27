@@ -6,6 +6,7 @@ But...Maybe there is something more to it..?
 
 This game was made for those who are interested in a dungeoncrawler roguelike type text based adventure game.
 Be warned this game is somewhat difficult, comparetive to the Souls games.
+The Game is also quite lengthy.
 
 
 ## Installation
